@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 부트스트랩 기본세팅 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>네비게이션바</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+  <!-- .dropdown > button생성 > .dropdown-menu > .dropdown-item -->
+  <!-- <div class="container">
+    <h3>트랍다운 버튼</h3>
+    <div class="dropdown">
+      <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        트롭 버튼
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#">첫번째 링크</a>
+        <a class="dropdown-item" href="https://www.google.co.kr/">두번째 링크</a>
+        <a class="dropdown-item" href="#">세번째 링크</a>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- 네브바 -->
+  <!--  navbar-expand-md 화면크기조정 md사이즈 이상일때 네버바 버튼 사라지고 나타남  -->
+  <!-- navbar-light글자색 검정 ,navbar-dark 글자색 흰색 bg-light light말고 다른색상 넣음 or style사용해서 원하는색 가능 -->
+  <nav class="navbar navbar-expand-md navbar-dark" style="background-color:brown;">
+    <!-- navbar-brand : 제목 -->
+    <a class="navbar-brand" href="#">제목</a>
+    <!-- navbar버튼(자동숨김) : 특정 화면 사이즈보다 작을때 나타남 -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- navbar버튼이 나타나면 navbar-collapse 아래의 태그가 사라짐 -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">홈 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">링크</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!-- 부트스트랩 js링크 1.제이쿼리 2.번들(부트스트랩)-->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 부트스트랩 기본세팅 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>부트스트랩</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+  <!-- 기본h사용 -->
+  <h1>h1. Bootstrap heading</h1>
+  <h2>h2. Bootstrap heading</h2>
+  <h3>h3. Bootstrap heading</h3>
+  <h4>h4. Bootstrap heading</h4>
+  <h5>h5. Bootstrap heading</h5>
+  <h6>h6. Bootstrap heading</h6>
+  <!-- 부트스트랩 h 사용 -->
+  <!-- 기본 h태그랑 비슷하게 보임 -->
+  <p class="h1">h1. Bootstrap heading</p>
+  <p class="h2">h2. Bootstrap heading</p>
+  <p class="h3">h3. Bootstrap heading</p>
+  <p class="h4">h4. Bootstrap heading</p>
+  <p class="h5">h5. Bootstrap heading</p>
+  <p class="h6">h6. Bootstrap heading</p>
+
+  <!-- 부트스트랩의 큰글자 distplay -->
+  <!-- 부트스트랩에만 있음 h태그보다 더큼 -->
+  <h1 class="display-1">Display 1</h1>
+  <h1 class="display-2">Display 2</h1>
+  <h1 class="display-3">Display 3</h1>
+  <h1 class="display-4">Display 4</h1>
+
+  <!-- 리드 글래스 -->
+  <!-- 리드클래스는 문단을 강조 -->
+  <!-- 글자 크기와 줄간격이 커짐 -->
+  <p class="lead">
+    이것은 리드 클래스입니다
+  </p>
+  <p>이것은 p태그 입니다</p>
+
+  <!-- 텍스트 정렬 -->
+  <blockquote class="blockquote text-center">
+    <p class="mb-0">>A well-known quote, contained in a blockquote element.</p>
+    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  </blockquote>
+
+  <blockquote class="blockquote text-left">
+    <p class="mb-0">>A well-known quote, contained in a blockquote element.</p>
+    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  </blockquote>
+
+  <blockquote class="blockquote text-right">
+    <p class="mb-0">>A well-known quote, contained in a blockquote element.</p>
+    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+  </blockquote>
+
+
+  <!-- 플로트 float -->
+  <div class="float-left">Float left on all viewport sizes</div><br>
+  <div class="float-right">Float right on all viewport sizes</div><br>
+  <div class="float-none">Don't float on all viewport sizes</div>
+
+  <!-- 부트스트랩 색상 -->
+  <p class="text-primary">.text-primary</p>
+  <p class="text-secondary">.text-secondary</p>
+  <p class="text-success">.text-success</p>
+  <p class="text-danger">.text-danger</p>
+  <p class="text-warning">.text-warning</p>
+  <p class="text-info">.text-info</p>
+  <p class="text-light bg-dark">.text-light</p>
+  <p class="text-dark">.text-dark</p>
+  <p class="text-body">.text-body</p>
+  <p class="text-muted">.text-muted</p>
+  <p class="text-white bg-dark">.text-white</p>
+  <p class="text-black-50">.text-black-50</p>
+  <p class="text-white-50 bg-dark">.text-white-50</p>
+
+  <!-- 백그라운드 색깔 -->
+  <!-- p는 패딩 m은 마진 b는 buttom -->
+  <div class="p-3 mb-2 bg-primary text-white">.bg-primary</div>
+  <div class="p-3 mb-2 bg-secondary text-white">.bg-secondary</div>
+  <div class="p-3 mb-2 bg-success text-white">.bg-success</div>
+  <div class="p-3 mb-2 bg-danger text-white">.bg-danger</div>
+  <div class="p-3 mb-2 bg-warning text-dark">.bg-warning</div>
+  <div class="p-3 mb-2 bg-info text-white">.bg-info</div>
+  <div class="p-3 mb-2 bg-light text-dark">.bg-light</div>
+  <div class="p-3 mb-2 bg-dark text-white">.bg-dark</div>
+  <div class="p-3 mb-2 bg-white text-dark">.bg-white</div>
+  <div class="p-3 mb-2 bg-transparent text-dark">.bg-transparent</div>
+
+  <!-- 예제 -->
+  <div class="container">
+
+    <h2>부트스트랩 텍스트</h2>
+    <code>.text-muted</code>
+    <p class="text-muted">이 서비스는 더이상 사용할 수 없습니다.</p>
+    <code>.text-primary</code>
+    <p class="text-primary">당신은 먼저 이용조건과 약관에 동의해야 합니다.</p>
+    <code>.text-success</code>
+    <p class="text-success">비밀번호가 성공적으로 변경되었습니다</p>
+    <code>.text-info</code>
+    <p class="text-info">다음 열차는 5분내에 도착할 예정입니다</p>
+    <code>.text-warning</code>
+    <p class="text-warning">POLICE LINE : 이 선을 넘지마시오</p>
+    <code>.text-danger</code>
+    <P class="text-danger">여기는 방사능 오염구역 입니다.</P>
+  </div>
+
+  <div class="container">
+    <h2>부트스트랩 백그라운드</h2>
+    <code>.bg-primary</code>
+    <p class=" bg-primary">당신은 먼저 이용조건과 약관에 동의해야 합니다.</p>
+  </div>
+
+
+  <div style="margin-top: 300px;"></div>
+  <!-- 부트스트랩 js링크 1.제이쿼리 2.번들(부트스트랩)-->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

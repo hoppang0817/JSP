@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 부트스트랩 기본세팅 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>마진,패딩,플랙스</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <style>
+    .v50 {
+      height: 50vh;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- l왼쪽 r오른쪽 t위 b아래 x좌우 y위아래 -->
+  <!-- w(width)-25,50,75,100 에서 선택 h(height)-25,50,75,100 에서 선택 mx-auto 좌우 대칭-->
+  <div class="container text-white">
+    <div class="bg-danger p-3 w-25 mx-auto">div블록입니다.</div>
+    <div class="bg-info p-3 mx-auto w-50">div블록입니다.</div>
+    <div class="bg-warning p-3 w-75 mx-auto">div블록입니다.</div>
+    <div class="bg-success p-3 w-100">div블록입니다.</div>
+    <div class="bg-primary p-3 w-50 mx-auto">div블록입니다.</div>
+    <div class="bg-secondary p-3 w-25 mx-auto">div블록입니다.</div>
+  </div>
+
+  <!-- 플랙스사용 d-flex-->
+  <div class="container my-5">
+    <div class="d-flex v50 align-items-center justify-content-between p-3 bg-secondary text-white">
+      <div class="bg-info p-2 align-self-start">Flex Item 1</div>
+      <div class="bg-warning p-2 ">Flex Item 2</div>
+      <div class="bg-primary p-2 align-self-end">Flex Item 3</div>
+    </div>
+  </div>
+
+  <!-- 예제 -->
+  <div class="container">
+    <h2>Flex</h2>
+    <div class="d-flex  p-3 bg-success text-white">
+      <div class="p-2">Home</div>
+      <div class="p-2">Search</div>
+      <div class="p-2 ml-auto">Logout</div>
+
+    </div>
+  </div>
+  <!-- 부트스트랩 js링크 1.제이쿼리 2.번들(부트스트랩)-->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

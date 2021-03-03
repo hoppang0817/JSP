@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 부트스트랩 기본세팅 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>네비게이션바 예제</title>
+  <!-- 부트스트랩 -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- 폰트오썸 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+</head>
+
+<body>
+  <!-- 네브바 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><i class="fab fa-angellist text-warning"></i></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll"
+      aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <i class="fas fa-home"></i> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown"
+            aria-expanded="false">
+            Link
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Link1</a></li>
+            <li><a class="dropdown-item" href="#">Link2</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Link3</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Link</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+      </form>
+    </div>
+  </nav>
+  <!-- 점보트론 -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="" display-4>Hello, world!</h1>
+      <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+        featured content or information.</p>
+      <hr class="my-4">
+      <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more <i class="fas fa-angle-double-right"></i></a>
+      <!-- lg버튼 크게 -->
+    </div>
+  </div>
+  <!-- col -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-lg-12">
+        <h2>Heading</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate modi debitis natus eius iure
+          voluptatum earum. Vitae quos, doloremque explicabo rem enim debitis voluptatum repellendus obcaecati.
+          Blanditiis, nobis atque!</p>
+        <a href="#" class="btn btn-primary">View datails <i class="fas fa-angle-double-right"></i></a>
+      </div>
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate modi debitis natus eius iure
+          voluptatum earum. Vitae quos, doloremque explicabo rem enim debitis voluptatum repellendus obcaecati.
+          Blanditiis, nobis atque!</p>
+        <a href="#" class="btn btn-success">View datails <i class="fas fa-angle-double-right"></i></a>
+      </div>
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum voluptate modi debitis natus eius iure
+          voluptatum earum. Vitae quos, doloremque explicabo rem enim debitis voluptatum repellendus obcaecati.
+          Blanditiis, nobis atque!</p>
+        <a href="#" class="btn btn-danger">View datails <i class="fas fa-angle-double-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="container my-5">
+    <hr>
+    <p>&copy;Company 2019-2021</p>
+  </footer>
+  <!-- 부트스트랩 js링크 1.제이쿼리 2.번들(부트스트랩)-->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

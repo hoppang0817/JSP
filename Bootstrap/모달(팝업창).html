@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 부트스트랩 기본세팅 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>모달:팝업창,오픈버튼</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+  <!--모달을 오픈할수있는 버튼 : 추가(데이터토글,타겟)-->
+  <div class="container">
+    <h3>Modal</h3>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mo1">
+      모달열기
+    </button>
+  </div>
+  <!-- Modal 숨어있다 버튼이 클릭되면 화면에 표시-->
+  <div class="modal fade" id="mo1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">제목</h5>
+          <!-- data-dismiss="modal" 입려하여야 버튼클릭시 창닫김 -->
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-6">
+              <!-- 폼그룹은 태그안의 라벨봐 인풋창을 그룹으로 묶어줌 -->
+              <div class="form-group">
+                <label>한글이름</label>
+                <!-- 폼컨트롤은 보더를 보기좋게 만든다. -->
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label>영문이름</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control">
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label>Comments</label>
+                <textarea placeholder="Input some text" class="form-control"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">닫기</button>
+          <button type="button" class="btn btn-danger">저장하기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- 부트스트랩 js링크 1.제이쿼리 2.번들(부트스트랩)-->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

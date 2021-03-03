@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 부트스트랩 기본세팅 -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>반응형그리드</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+  <h2>컨테이너와 컨테이너-플루이드 차이</h2>
+  <!-- 컨테이너는 여백O, 플루이드는 여백X  화면이 작아지면 어느순간 컨테이너는 플루이드와 같아짐-->
+  <code>.container</code>
+  <div class="container" style="background-color: aqua;">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aliquam aliquid libero repellendus dolorem amet aut
+    animi, consequuntur pariatur ut consequatur expedita repellat aperiam, ullam velit atque a rem nesciunt.
+  </div>
+
+  <code>.container-fluid</code>
+  <div class="container-fluid bg-warning">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi provident veniam, iure magni labore vero consequuntur
+    dignissimos totam placeat voluptas hic ex vel est autem officiis possimus, nihil rerum quisquam?
+  </div>
+  <br>
+  <br>
+  <hr>
+  <br>
+  <h2>그리드 시스템</h2>
+  <!-- 1.컨테이너 2.행(로우) 3.열(col) -->
+  <!-- 그리드는 열마다 다른 비율을 줄수있음 총12등분에서 나눠가짐 -->
+  <!-- 한줄에 아이템들이 12등분넘게 나눠가지면 마지막 아이템은 밑줄로 넘어감 -->
+  <!-- 화면크기에 따라 비율 줄수있음 -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-xl-4" style="background-color: chartreuse;">컨텐츠1</div>
+      <div class="col-md-6 col-xl-4" style="background-color: chocolate;">컨텐츠2</div>
+      <div class="col-md-6 col-xl-4" style="background-color: crimson;">컨텐츠3</div>
+    </div>
+  </div>
+
+  <h2>예제</h2>
+  <!-- 예제 -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-12 col-sm-12" style="background-color: crimson;">header</div>
+      <div class="col-lg-3 col-md-6 col-sm-12" style="background-color: cyan;">content1</div>
+      <div class="col-lg-2 col-md-4 col-sm-8" style="background-color: darkgoldenrod;">content2</div>
+      <div class="col-lg-1 col-md-2 col-sm-4" style="background-color: darkorchid;">menu</div>
+    </div>
+  </div>
+
+  <!-- 부트스트랩 js링크 1.제이쿼리 2.번들(부트스트랩)-->
+  <script src="js/jquery-3.5.1.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
