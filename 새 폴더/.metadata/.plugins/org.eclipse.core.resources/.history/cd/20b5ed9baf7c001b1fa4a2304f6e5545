@@ -1,0 +1,12 @@
+<%@ page errorPage="page_isErrorPage_error.jsp"%>
+<html>
+<head>
+<title>Directives Tag</title>
+</head>
+<body>
+	<% //널값을 넣어 에러발생
+		String str = null;
+		out.println(str.toString()); //여기서 에러발생
+	%>
+</body>
+</html>
