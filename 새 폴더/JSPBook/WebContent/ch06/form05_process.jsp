@@ -18,8 +18,8 @@
 		String comment = request.getParameter("comment");
 	%>
 	<p> 아이디 : <%=id%>
-	<p>	비밀번호 : <%=name%>
-	<p>	이름 : <%=passwd%>
+	<p>	비밀번호 : <%=passwd%>
+	<p>	이름 : <%=name%>
 	<p>	연락처 : <%=phone1%>-<%=phone2%>-<%=phone3%>
 	<p>	성별 : <%=sex%>
 	<p>	취미 : 

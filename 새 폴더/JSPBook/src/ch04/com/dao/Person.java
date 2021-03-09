@@ -1,8 +1,9 @@
 package ch04.com.dao;
 
 public class Person {
+//	멤버변수들은 private으로작성
 	private int id = 20181004;
-	private String name = "ȫ���";
+	private String name = "홍길순";
 
 	public Person() {
 		

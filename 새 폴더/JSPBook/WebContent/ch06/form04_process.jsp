@@ -5,6 +5,9 @@
 </head>
 <body>
 	<%
+		//form04.jsp에서 전달된 파라메터들을 처리함
+		
+		//한글 입력시 UTF-8로 변환
 		request.setCharacterEncoding("UTF-8");
 
 		String id = request.getParameter("id");

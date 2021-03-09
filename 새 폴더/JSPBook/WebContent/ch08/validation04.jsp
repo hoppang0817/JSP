@@ -16,8 +16,9 @@
 				return;
 			}
 		}
-	
-		if (isNaN(form.passwd.value)){
+		
+		///isNaN(숫자)=>false,숫자가아니면  true
+		if (isNaN(form.passwd.value) || form.passwd.value ==""){
 			alert("비밀번호는 숫자로만 입력 가능 합니다!");
 			form.passwd.select();
 			return;

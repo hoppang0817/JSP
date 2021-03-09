@@ -1,0 +1,34 @@
+package dto;
+
+import java.io.Serializable;
+
+public class Product implements Serializable{
+	
+	private String productId; //상품아이디
+	private String pname;     //상품명
+	private Integer unitPrice; //상품 가격
+	private String description; //상품설명
+	private String manufacturer; //제조사
+	private String category;    //분류
+	private long unitsInStock;  //재고수 
+	private String condition;  //신상품 or중고품or 재생품
+	
+	//기본생성자
+	public Product() {
+		
+	}
+	
+	
+	//아이디,이름,가격으로 생성자 
+	public Product(String productId, String pname, Integer unitPrice) {
+		super();
+		this.productId = productId;
+		this.pname = pname;
+		this.unitPrice = unitPrice;
+	}
+	
+
+	
+	
+
+}

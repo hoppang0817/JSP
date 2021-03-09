@@ -5,7 +5,8 @@
 </head>
 <script type="text/javascript">
 	function checkMember() {
-
+	
+		// /정규표현식/^시작을 표시함
 		var regExpId = /^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 		var regExpName = /^[가-힣]*$/;
 		var regExpPasswd = /^[0-9]*$/;

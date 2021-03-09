@@ -1,0 +1,46 @@
+<%@page import="dto.Product"%>
+<%@page import="dao.ProductRepository"%>
+<%
+//addProduct 페이지에서 넘어온 파라메터들으 처리한다
+	//한글처리
+	request.setCharacterEncoding("UTF-8");
+	
+
+	String productId = request.getParameter("productId");
+	String name = request.getParameter("name");
+	String unitPrice = request.getParameter("unitPrice");
+	String description = request.getParameter("description");
+	String manufacturer = request.getParameter("manufacturer");
+	String category = request.getParameter("category");
+	String unitsInStock = request.getParameter("unitInStock");
+	String condition = request.getParameter("condition");
+	//가격과 재고수는 문자열로 넘어왔지만 숫자로처리해야함.
+	Integer price;
+	
+	//가격을 적지않으면 0, 숫자문자열을 숫자로 변환
+	if(unitPrice.isEmpty())price =0;
+	else price = Integer.valueOf(unitPrice);
+	
+	long stock;
+	
+	if(unitsInStock.isEmpty())stock =0;
+	else stock = Long.valueOf(unitsInStock);
+	
+	//상품 리파지토리 객체를 가져온다(Static 객체)
+	ProductRepository dao = ProductRepository.getInstance();
+	//새상품 객체를 만든후 변수값을 입력한다
+	Product newProduct = new Product();
+	newProduct.setProductId(productId);
+	newProduct.setProductId(name);
+	newProduct.setUnitPrice(price);
+	newProduct.setProductId(description);
+	newProduct.setProductId(manufacturer);
+	newProduct.setProductId(category);
+	newProduct.setUnitsInStock(stock);
+	newProduct.setProductId(condition);
+	
+	dao.addProduct(newProduct);
+	//다시 목록페이지로이동
+	response.sendRedirect("product.jsp");
+	
+%>

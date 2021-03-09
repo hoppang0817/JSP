@@ -5,6 +5,7 @@
 </head>
 <body>
 	<%
+	//한글입려시 깨지지않게 인코딩
 		request.setCharacterEncoding("utf-8");
 		String userid = request.getParameter("id");
 		String password = request.getParameter("passwd");

@@ -1,0 +1,13 @@
+<%@ page contentType="text/html; charset=utf-8"%>
+<html>
+<head>
+<title>Action Tag</title>
+</head>
+<body>
+	<h2>include 액션 태그</h2>
+	<!-- 인클루드 데이터 파일을 실행하고 다시돌아온다 -->
+	<jsp:include page="include_date.jsp" flush="true" />
+	<p>-------------------------------</p>
+	<!-- 인클루드 디렉티드태그와 차이점은 디렉티브태그는 정적으로 외부파일으 삽입시킨거면  액션태그는 외부파일을 읽은후 다신원 파일로돌아온다  -->
+</body>
+</html>

@@ -15,7 +15,8 @@
 			form.passwd.focus();
 			return false;
 		}
-		form.submit();
+		//자바스크립트로 form에 입력한 내용을 서버로 보낸다
+		form.submit(); //자바스크립트로 서버 보내기
 	}
 </script>
 <body>

@@ -5,6 +5,7 @@
 <title>Internationalization</title>
 </head>
 <body>
+<!-- currency통화표시 -->
 	<p> 숫자 : <fmt:formatNumber value="3200100" />	
 	<p> <fmt:formatNumber value="3200100" type="number" />
 	<p> <fmt:formatNumber value="3200100" type="number" groupingUsed="false" />	

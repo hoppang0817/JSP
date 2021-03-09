@@ -6,7 +6,8 @@
 
 <body>
 	<h3>입력에 성공했습니다.</h3>
-	<%
+	<%  
+		//한글 인코딩
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
 		String passwd = request.getParameter("passwd");
