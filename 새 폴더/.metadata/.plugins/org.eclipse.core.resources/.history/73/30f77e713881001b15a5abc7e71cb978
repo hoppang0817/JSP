@@ -1,0 +1,33 @@
+<web-app>
+<!-- 시큐리티 설정 방법 1.role설정(톰캣에 있어야함) 2.프로젝트이름 3.설정할페이지-->
+	<security-role>
+		<role-name>role1</role-name>
+	</security-role>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>JSPBook</web-resource-name>
+			<url-pattern>/ch10/security02.jsp</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description></description>
+			<role-name>role1</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+<!-- 인증방법 Basic 또는 form으로 설정 -->	
+	<login-config>
+ 		<auth-method>BASIC</auth-method>		
+ 	</login-config>
+ 
+ <!-- 	
+ 	<login-config>
+ 		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/ch10/login.jsp</form-login-page>
+			<form-error-page>/ch10/login_failed.jsp</form-error-page>
+		</form-login-config>
+ 	</login-config>
+ -->
+
+</web-app>

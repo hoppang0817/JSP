@@ -1,0 +1,117 @@
+<!-- utf-8설정및 페이지 정보 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="dto.Product"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- 자바빈즈로 제품목록을 가진 객체를 불러온다 -->
+<jsp:useBean id="productDAO" class="dao.ProductRepository"
+	scope="session" />
+<html>
+<head>
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<!-- 자바스크립트 링크 -->
+<script src="resources/js/validation.js"></script>
+<title>addProduct</title>
+</head>
+<body>
+	<%
+		String lang = request.getParameter("lang");
+		if(lang == null)lang ="ko";
+	%>
+	<fmt:setLocale value="<%=lang%>" />
+	<!-- 다국어 처리를 위해 번들패키지의 메세지를 지정 -->
+	<fmt:setBundle basename="bundle.message" />
+	<%@ include file="menu.jsp"%>
+
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">
+				<fmt:message key="title" />
+			</h1>
+		</div>
+	</div>
+	<div class="container">
+	<div class="text-right">
+	<a href="?lang=ko">Korean</a> | <a href="?lang=en">English</a>
+	<a href="lonout.jsp" class="btn btn-sm btn-success">longout</a>
+	</div>
+		<form name="newProduct" enctype="multipart/form-data"
+			action="./processAddProduct.jsp" class="form-horizontal"
+			method="post">
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="productId" /></label>
+				<div class="col-sm-3">
+					<!-- 자바스크립트에서 getElementById를 사용하여 input에도id를 추가해줌 -->
+					<input type="text" name="productId" class="form-control"
+						id="productId">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="pname" /></label>
+				<div class="col-sm-3">
+					<input type="text" name="name" class="form-control" id="name">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="unitPrice" /></label>
+				<div class="col-sm-3">
+					<input type="text" name="unitPrice" class="form-control"
+						id="unitPrice">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="description" /></label>
+				<div class="col-sm-5">
+					<textarea name="description" cols="50" rows="2"
+						class="form-control"></textarea>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="manufacturer" /></label>
+				<div class="col-sm-3">
+					<input type="text" name="manufacturer" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="category" /></label>
+				<div class="col-sm-3">
+					<input type="text" name="category" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="unitsInStock" /></label>
+				<div class="col-sm-3">
+					<input type="text" name="unitsInStock" class="form-control"
+						id="unitsInStock">
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="condition" /></label>
+				<div class="col-sm-5">
+					<input type="radio" name="condition" value="New "> <fmt:message key="condition_New" /> <input
+						type="radio" name="condition" value="Old"> <fmt:message key="condition_Old" /> <input
+						type="radio" name="condition" value="Refurbished"> <fmt:message key="condition_Refurbished" />
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-2"><fmt:message key="productImage" /></label>
+				<div class="col-sm-5">
+					<input type="file" name="productImage" class="form-control">
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-sm-offset-2 col-sm-10 ">
+					<input type="button" onclick="CheckAddProduct();"
+						class="btn btn-primary" value=<fmt:message key="button" />>
+				</div>
+			</div>
+
+		</form>
+
+
+	</div>
+
+</body>
+</html>

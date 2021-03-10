@@ -12,7 +12,7 @@ import javax.servlet.ServletResponse;
 public class AuthenFilter implements Filter {
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		System.out.println("Filter01 초기화...");
+		System.out.println("Filter01 초기화...");//필터 설정시 최초1번실행
 	}
 
 	@Override

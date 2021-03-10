@@ -4,6 +4,6 @@
 <title>Exception</title>
 </head>
 <body>
-	errorCode 505 오류가 발생하였습니다.	
+	errorCode 500 오류가 발생하였습니다.	
 </body>
 </html>

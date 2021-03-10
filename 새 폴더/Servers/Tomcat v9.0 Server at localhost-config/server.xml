@@ -155,7 +155,7 @@
 
       <Context docBase="JSPBook" path="/JSPBook" reloadable="true" source="org.eclipse.jst.jee.server:JSPBook"/><Context docBase="WebMarket" path="/WebMarket" reloadable="true" source="org.eclipse.jst.jee.server:WebMarket"/>
       <!-- 톰캣이 바로 업로드폴더로 접근할수있게 설정 -->
-      <Context docBase="C:\\upload" path="/upload" reloadable="true"></Context>
+      <Context docBase="C:\\upload" path="/upload" reloadable="true"/>
       </Host>
     </Engine>
   </Service>

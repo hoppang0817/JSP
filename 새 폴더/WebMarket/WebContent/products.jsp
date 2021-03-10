@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="dto.Product"%>
 <%@ page import="dao.ProductRepository"%>
+<%@ page errorPage="exceptionNoProductId.jsp"%>
 <html>
 <head>
 <link rel="stylesheet" 	href="resources/css/bootstrap.min.css">
@@ -15,6 +16,7 @@
 	</div>
 	<%
 		//products페이지에서 넘어온 아이디의 값을 가져온다.
+		//만약 id가 넘어오지 않으면 오류발생-> 에러페이지에서 처리
 		String id = request.getParameter("id");
 		//스테틱 인스턴스 객체를 가져와서 업데이트 된 제품 리스트레서 제품 찾음
 		ProductRepository dao = ProductRepository.getInstance();

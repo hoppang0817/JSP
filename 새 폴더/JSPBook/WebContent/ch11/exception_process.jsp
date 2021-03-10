@@ -8,6 +8,7 @@
 	<%
 		String num1 = request.getParameter("num1");
 		String num2 = request.getParameter("num2");
+		//String을 int로 변환
 		int a = Integer.parseInt(num1);
 		int b = Integer.parseInt(num2);
 		int c = a / b;

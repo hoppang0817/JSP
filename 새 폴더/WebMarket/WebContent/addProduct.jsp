@@ -35,6 +35,7 @@
 	<div class="container">
 	<div class="text-right">
 	<a href="?lang=ko">Korean</a> | <a href="?lang=en">English</a>
+	<a href="logout.jsp" class="btn btn-sm btn-success">로그아웃</a>
 	</div>
 		<form name="newProduct" enctype="multipart/form-data"
 			action="./processAddProduct.jsp" class="form-horizontal"
