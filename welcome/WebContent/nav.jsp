@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" 
 	pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand  navbar-dark bg-dark">
 		<div class="container">

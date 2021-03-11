@@ -25,7 +25,7 @@
 			%>
 			<form class="form-signin" action="j_security_check" method="post">
 				<div class="form-group">
-					<label for="inputUserName" class="sr-only">User Name</label> 
+					<label for="inputUserName" class="sr-only">User Name</label> <!-- for문:input id이름과같다면 레이블(User Name)클릭해도 input창 선택가능 -->
 					<input	type="text" class="form-control" placeholder="ID"	name='j_username' required autofocus>
 				</div>
 				<div class="form-group">
