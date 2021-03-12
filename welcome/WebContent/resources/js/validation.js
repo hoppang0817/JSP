@@ -10,7 +10,7 @@ function CkeckaddBook(){
 
   if(name.value.length < 4 || name.value.length > 12){
   alert("[상품명]\n최소 4자에서 최대 12자까지 입력하세요 ");
-    ㅠname.select();
+    name.select();
 	name.focus();
 	return false;
   }

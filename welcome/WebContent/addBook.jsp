@@ -115,7 +115,7 @@
 			</div>
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="button" onclick="CheckaddBook()"
+					<input type="button" onclick="CkeckaddBook()"
 						class="btn btn-primary" value=<fmt:message key="button"/>>
 				</div>
 			</div>
