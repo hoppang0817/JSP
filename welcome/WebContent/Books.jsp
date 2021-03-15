@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="dto.Book"%>
 <%@ page import="dao.BookRepository" %>
+<%@ page errorPage="exceptionNoBook.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>

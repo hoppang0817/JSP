@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="dto.Book"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <jsp:useBean id="BookDAO" class="dao.BookRepository" scope="session" />
 
 <html>
@@ -40,7 +39,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2"><fmt:message key="bookId"/></label>
 				<div class="col-sm-3">
-					<input type="text" name="bookId" class="form-control">
+					<input type="text" name="bookId" class="form-control" id="bookId">
 				</div>
 			</div>
 			<div class="form-group row">
@@ -115,7 +114,7 @@
 			</div>
 			<div class="form-group row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="button" onclick="CkeckaddBook()"
+					<input type="button" onclick="CheckAddBook()"
 						class="btn btn-primary" value=<fmt:message key="button"/>>
 				</div>
 			</div>

@@ -1,9 +1,7 @@
 <!-- utf-8설정및 페이지 정보 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="dto.Product"%>
-<%@ page import="dao.ProductRepository"%>
+<%@ page import ="java.sql.*" %>
 <html>
 <head>
 <link rel="stylesheet"
@@ -11,6 +9,7 @@
 <title>Product List</title>
 </head>
 <body>
+	
 	<%@ include file="menu.jsp"%>
 
 
@@ -19,33 +18,32 @@
 			<h1 class="display-3" >상품목록</h1>
 		</div>
 	</div>
-	<%
-	//상품 리파지토리 객체를 가져온다(Static 객체)
-	ProductRepository dao = ProductRepository.getInstance();
-	//상품목록 가져오기.
-	ArrayList<Product> listOfProducts = dao.getAllProduct();
-	%>
-
+	<%@ include file="dbconn.jsp" %>
 	<div class="container">
 		<div class="row" align="center">
+		
 			<%
-				//여기에 위에 가져온 제품 리스트를 가지고 제품하나하나출력
-			for (int i = 0; i < listOfProducts.size(); i++) {
-				Product product = listOfProducts.get(i);
+			PreparedStatement pstmt =null;
+			ResultSet rs = null;
+			String sql ="select * from product";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				
 			%>
 				<div class="col-md-4">
-				<!-- severs->server->source-> <Context docBase="C:\\upload" path="/upload" reloadable="true">경로 추가 -->
-					<img style="width:100%;" src="/upload/<%=product.getFilename()%>">
-					<h3><%=product.getPname()%></h3>
-					<p><%=product.getDescription()%></p>
-					<p><%=product.getUnitPrice()%>원</p>
+					<img style="width:100%;" src="/upload/<%=rs.getString("p_fileName")%>">
+					<h3><%=rs.getString("p_name")%></h3>
+					<p><%=rs.getString("p_description")%></p>
+					<p><%=rs.getString("p_unitPrice")%>원</p>
 					<!-- id를 products페이지로 보냄 -->
-					<p><a href="./products.jsp?id=<%=product.getProductId()%>" 
+					<p><a href="./products.jsp?id=<%=rs.getString("p_id")%>" 
 					     class="btn btn-secondary">상세 정보&raquo;</a>
 				</div>
 			<%
 				}
-			%>
+			 %>
 
 		</div>
 		<hr>

@@ -1,7 +1,7 @@
-<%@page import="dto.Product"%>
-<%@page import="dao.ProductRepository"%>
 <%@ page import="com.oreilly.servlet.*"%>
 <%@ page import="com.oreilly.servlet.multipart.*"%>
+<%@ page import="java.sql.*" %>
+<%@ include file="dbconn.jsp" %>
 <%
 //addProduct 페이지에서 넘어온 파라메터들으 처리한다
 	//한글처리
@@ -32,21 +32,22 @@
 	if(unitsInStock.isEmpty())stock = 0;
 	else stock = Long.valueOf(unitsInStock);
 	
-	//상품 리파지토리 객체를 가져온다(Static 객체)
-	ProductRepository dao = ProductRepository.getInstance();
-	//새상품 객체를 만든후 변수값을 입력한다
-	Product newProduct = new Product();
-	newProduct.setProductId(productId);
-	newProduct.setPname(name);
-	newProduct.setUnitPrice(price);
-	newProduct.setDescription(description);
-	newProduct.setManufacturer(manufacturer);
-	newProduct.setCategory(category);
-	newProduct.setUnitsInStock(stock);
-	newProduct.setCondition(condition);
-	newProduct.setFilename(fileName);
+	PreparedStatement pstmt =null;
 	
-	dao.addProduct(newProduct);
+	String sql = "insert into product values(?,?,?,?,?,?,?,?,?)";
+	pstmt = conn.prepareStatement(sql);
+	pstmt.setString(1, productId);
+	pstmt.setString(2, name);
+	pstmt.setInt(3, price);
+	pstmt.setString(4, description);
+	pstmt.setString(5, category);
+	pstmt.setString(6, manufacturer);
+	pstmt.setLong(7, stock);
+	pstmt.setString(8, condition);
+	pstmt.setString(9, fileName);
+	pstmt.executeUpdate();
+
+	
 	//다시 목록페이지로이동
 	response.sendRedirect("product.jsp");
 	

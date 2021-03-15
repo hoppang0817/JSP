@@ -13,6 +13,7 @@ public class Product implements Serializable{
 	private long unitsInStock;  //재고수 
 	private String condition;  //신상품 or중고품or 재생품
 	private String filename;  //이미지파일명
+	private int quantity; //장바구니에 담은 갯수
 	
 	//기본생성자
 	public Product() {
@@ -31,6 +32,16 @@ public class Product implements Serializable{
 
 
 	
+	public int getQuantity() {
+		return quantity;
+	}
+
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+
 	public String getFilename() {
 		return filename;
 	}
