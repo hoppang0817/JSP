@@ -16,6 +16,7 @@ public class Book implements Serializable{
 	private String releaseDate; //출판일(월/년)
 	private String condition;   //신규도서 or중고도서or E-Book
 	private String filename;
+	private int quantity;
 	
 	public Book() {
 		
@@ -31,6 +32,14 @@ public class Book implements Serializable{
 	
 	
 	
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	public String getFilename() {
 		return filename;
 	}

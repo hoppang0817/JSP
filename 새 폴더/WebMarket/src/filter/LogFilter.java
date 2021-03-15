@@ -25,9 +25,7 @@ public class LogFilter implements Filter  {
 		System.out.println("=======================================================");
 	}
 
-	public void destroy( ){
-      
-	}
+	
 
 	private String getURLPath(ServletRequest request) {
 		HttpServletRequest req;
