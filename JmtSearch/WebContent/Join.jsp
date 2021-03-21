@@ -28,7 +28,7 @@
  <div class="container" style="margin-top: 70px;">
     <h2>회원가입</h2>
     <br> <br>
-    <form class="form-horizontal" action="" method="POST" name="userInfo" onsubmit="return checkValue()">
+    <form class="form-horizontal" action="addMember.jsp" method="POST" name="userInfo" onsubmit="return checkValue()">
       <div class="form-group row">
         <label class="control-label col-sm-2">아이디</label>
         <div class="col-sm-3">
