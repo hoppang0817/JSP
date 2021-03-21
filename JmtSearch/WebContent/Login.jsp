@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<div class="container" align="center">
+	<div class="container" align="center" style="margin-top: 70px;">
 		<div class="col-md-4 col-md-offset-4">
 			<h3 class="form-signin-heading"><i class="far fa-user-circle fa-5x" ></i></h3>
 			<form class="form-signin" action="" method="POST">
@@ -29,7 +29,7 @@
 				<button class="btn btn btn-lg btn-primary btn-block" type="submit">로그인</button>
 				 </div>
 				 <div class="form-group">	
-				 <a href="#"><b>아이디찾기</b></a> | <a href="#"><b>비밀번호찾기</b></a>
+				 <a href="IdFiend.jsp"><b>아이디찾기</b></a> | <a href="PwFiend.jsp"><b>비밀번호찾기</b></a>
 				 </div>
 				 <a href="Join.jsp"><b>회원가입</b></a>
 				 
