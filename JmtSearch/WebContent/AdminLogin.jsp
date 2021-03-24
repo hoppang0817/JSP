@@ -47,25 +47,29 @@
 	<div class="container" align="center" style="margin-top: 70px;">
 		<div class="col-md-4 col-md-offset-4">
 			<h3 class="form-signin-heading"><i class="far fa-user-circle fa-5x" ></i></h3>
-			<form class="form-signin" action="LoginCheck.jsp" method="POST">
+			<%
+			//에러이름의 파라메터를 가져온다. 만약 에러가 null이 아니면 아이디 비번체크
+				String error = request.getParameter("error");
+				if (error != null) {
+					out.println("<div class='alert alert-danger'>");
+					out.println("아이디와 비밀번호를 확인해 주세요");
+					out.println("</div>");
+				}
+			%>
+			<form class="form-signin" action="j_security_check" method="POST">
 				<div class="form-group">
 					<label for="inputUserId" class="sr-only">User Id</label> <input
-						type="text" name="id" class="form-control" placeholder="ID" required
+						type="text" name='j_username' class="form-control" placeholder="ID" required
 						autofocus>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword" class="sr-only">Password</label> <input
-						type="password" name="password" class="form-control" placeholder="Password"
+						type="password" name='j_password' class="form-control" placeholder="Password"
 						required>
 				</div>
 				<div class="form-group">	
 				<button class="btn btn btn-lg btn-primary btn-block" type="submit">로그인</button>
-				 </div>
-				 <div class="form-group">	
-				 <a href="IdFind.jsp"><b>아이디찾기</b></a> | <a href="PwFind.jsp"><b>비밀번호찾기</b></a>
-				 </div>
-				 <a href="Join.jsp"><b>회원가입</b></a>
-				 
+				</div>
 			</form>
 		</div>
 	</div>

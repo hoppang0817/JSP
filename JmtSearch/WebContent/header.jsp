@@ -9,7 +9,7 @@
 <!-- header -->
     <header class="header">
         <div class="logo">
-            <a href="index.html">
+            <a href="index.jsp">
                 <img class="logo-img" src="resources/img/JMT-logo-white.png" alt="">
             </a>
         </div>
@@ -53,7 +53,7 @@
                         </c:when>
 						<c:otherwise>
 							<li><a href="Logout.jsp"><span>로그아웃</span></a></li>
-							<li><a href="Login.jsp"><span>마이페이지</span></a></li>
+							<li><a href="#"><span>마이페이지</span></a></li>
 						</c:otherwise>					
 					</c:choose>
                         <hr>

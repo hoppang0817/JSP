@@ -9,4 +9,30 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
+  <security-role>
+		<role-name>admin</role-name>
+	</security-role>
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>JmtSearch</web-resource-name>
+			<url-pattern>/adminpage.jsp</url-pattern>
+			<http-method>GET</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>관리자</description>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+  
+  
+  <login-config>
+		<auth-method>FORM</auth-method>
+		<form-login-config>
+			<form-login-page>/AdminLogin.jsp</form-login-page>
+			<form-error-page>/AdminLogin_failed.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+  
 </web-app>

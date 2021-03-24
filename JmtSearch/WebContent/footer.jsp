@@ -17,6 +17,9 @@
                         <li>
                             <a href="">팀원 소개 및 역할</a>
                         </li>
+                        <li>
+                            <a href="adminpage.jsp">관리자</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="info">

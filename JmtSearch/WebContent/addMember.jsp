@@ -12,7 +12,7 @@
 	String age = request.getParameter("age");
 	String phone = request.getParameter("phone");
 	String email = request.getParameter("email1")+"@"+request.getParameter("email2");
-	String addr = "("+request.getParameter("zipcode")+")"+request.getParameter("address1")+request.getParameter("address2");
+	String addr = request.getParameter("address1")+request.getParameter("address2");
 
 	PreparedStatement pstmt = null;
 	

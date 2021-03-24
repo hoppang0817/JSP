@@ -15,6 +15,7 @@ public class MemberDTO {
 	public MemberDTO() {
 		
 	}
+	
 
 	public String getId() {
 		return id;
