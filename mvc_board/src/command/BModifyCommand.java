@@ -13,7 +13,7 @@ public class BModifyCommand implements BCommand {
 		String bId = request.getParameter("bId");
 		String bName = request.getParameter("bName");
 		String bTitle = request.getParameter("bTitle");
-		String bContent = request.getParameter("bConten");
+		String bContent = request.getParameter("bContent");
 		
 		BDao dao = new BDao();
 		dao.modify(bId,bName,bTitle,bContent);

@@ -77,7 +77,7 @@ public class BFrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage ="content_view.jsp";
 		}
-		else if(com.equals("/modify.do")) {
+		else if(com.equals("/modify.do")) { //수정
 			command = new BModifyCommand();
 			command.execute(request, response);
 			viewPage ="list.do";

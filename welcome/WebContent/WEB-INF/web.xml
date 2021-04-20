@@ -40,15 +40,16 @@
 		<error-code>404</error-code>
 		<location>/execeptionNoPage.jsp</location>
 	</error-page>
-	<!-- 필터 
-	<filter>
-		<filter-name>logFilter</filter-name>
-		<filter-class>filter.LogFilter</filter-class>
-	</filter>
-	<filter-mapping>
-			<filter-name>logFilter</filter-name>
-			<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	-->
-	
+	<!-- 필터 <filter> <filter-name>logFilter</filter-name> <filter-class>filter.LogFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>logFilter</filter-name> <url-pattern>/*</url-pattern> 
+		</filter-mapping> -->
+	<servlet>
+		<servlet-name>myController</servlet-name>
+		<servlet-class>ch18.com.controller.ControllerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>myController</servlet-name>
+		<url-pattern>ch18/ControllerServlet</url-pattern>
+	</servlet-mapping>
+
 </web-app>
