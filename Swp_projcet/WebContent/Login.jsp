@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,9 +11,11 @@
 	crossorigin="anonymous" />
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <meta charset="UTF-8">
-<title>Login</title>
+<title>Staff Login</title>
 </head>
 <body>
+
+
 	<style>
 #img {
 	height: 90px;
@@ -20,7 +24,7 @@
 }
 </style>
 	
-	<div class="container" align="center" >
+	<div class="container" align="center" style="margin-top:200px" >
 		<div class="col-md-4 col-md-offset-4">
 			<h5 class="form-signin-heading">
 				<a href="#"><img src="./resources/img/a2.png" id="img"></a>
@@ -30,6 +34,11 @@
 					<label for="inputUserId" class="sr-only">User Id</label> 
 					<input type="text" name="id" class="form-control" placeholder="ID"  required autofocus>
 				</div>
+				<div class="form-group">
+					<label for="inputUserPassword" class="sr-only">User Password</label> 
+					<input type="password" name="pw" class="form-control" placeholder="PW"  required autofocus>
+				</div>
+				<button type="submit" class="btn btn-primary form-control">로그인</button>
 			</form>
 
 		</div>
