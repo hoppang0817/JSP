@@ -32,14 +32,14 @@ body, html {
 					<div class="collapse navbar-collapse align-items-start">
 						<ul
 							class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-							<li class="nav-item"><a class="nav-link pl-0 text-nowrap" href="#">
+							<li class="nav-item"><a class="nav-link pl-0 text-nowrap" href="menu.jsp">
 								<i class="fa fa-bullseye fa-fw"></i> <span class="font-weight-bold">SWP</span></a>
 							</li>
 							<li class="nav-item dropdown"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="far fa-heart"></i> <span class="d-none d-md-inline">회원 관리</span></a> <span class="caret"></span>
 								<div class="dropdown-menu">
 									<a class="dropdown-item" href="JoinMember.jsp">회원 등록</a> 
-									<a class="dropdown-item" href="#">회원 목록</a>
+									<a class="dropdown-item" href="MemberList.do">회원 목록</a>
 								</div>
 							</li>
 							<li class="nav-item dropdown"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

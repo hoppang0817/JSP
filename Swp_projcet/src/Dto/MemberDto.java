@@ -6,9 +6,9 @@ public class MemberDto {
 	private String m_name;
 	private String m_phone;
 	private String m_arrd;
-	private int c_num; //수업 번호
 	private String m_sex;
 	private String m_email;
+	private int c_num; //수업 번호
 	
 	
 	
@@ -23,9 +23,9 @@ public class MemberDto {
 		this.m_name = m_name;
 		this.m_phone = m_phone;
 		this.m_arrd = m_arrd;
-		this.c_num = c_num;
 		this.m_sex = m_sex;
 		this.m_email = m_email;
+		this.c_num = c_num;
 	}
 
 	

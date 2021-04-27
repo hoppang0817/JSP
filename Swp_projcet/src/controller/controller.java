@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import Dao.StaffDao;
 import command.Command;
+import command.MemberList;
+import command.addMember;
 
 
 @WebServlet("*.do")
@@ -67,7 +69,14 @@ public class controller extends HttpServlet {
 			}
 		}
 		else if(com.equals("/joinMember.do")) {
-			
+			command =new addMember();
+			command.execute(request, response);
+			viewPage = "MemberList.do";
+		}
+		else if(com.equals("/MemberList.do")) {
+			command = new MemberList();
+			command.execute(request, response);
+			viewPage ="MemberList.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
