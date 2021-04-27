@@ -24,7 +24,7 @@ body, html {
 }
 </style>
 
-	<div class="container-fluid h-100">
+	<div class="container-fluid ">
 		<div class="row h-100">
 			<aside class="col-12 col-md-2 p-0 bg-dark fixed-top">
 				<nav
@@ -38,7 +38,7 @@ body, html {
 							<li class="nav-item dropdown"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="far fa-heart"></i> <span class="d-none d-md-inline">회원 관리</span></a> <span class="caret"></span>
 								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">회원 등록</a> 
+									<a class="dropdown-item" href="JoinMember.jsp">회원 등록</a> 
 									<a class="dropdown-item" href="#">회원 목록</a>
 								</div>
 							</li>
@@ -59,11 +59,6 @@ body, html {
 					</div>
 				</nav>
 			</aside>
-			 <main class="col offset-md-2 bg-faded py-3">
-            <div>
-            <h1>여기</h1>
-            </div>
-        </main>
 		</div>
 	</div>
 </body>

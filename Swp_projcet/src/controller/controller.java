@@ -8,9 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import Dao.StaffDao;
 import command.Command;
-import command.StaffLoin;
 
 
 @WebServlet("*.do")
@@ -42,9 +43,31 @@ public class controller extends HttpServlet {
 		String com = uri.substring(conPath.length());
 		
 		if(com.equals("/LoginAction.do")) {
-			command = new StaffLoin();
-			command.execute(request, response);
-			viewPage = "menu.jsp";
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			
+			StaffDao dao = StaffDao.getInstance();
+			
+			int result = dao.login(id, pw);
+			
+			if(result == 1) {
+				request.setAttribute("loginResult", result);
+				HttpSession session = request.getSession();
+				session.setAttribute("sessionId", id);
+				viewPage = "menu.jsp";
+				
+			}
+			else if(result == 0){
+				request.setAttribute("loginResult", result);
+				viewPage ="Login.jsp";
+			}
+			else if(result ==-1) {
+				request.setAttribute("loginResult", result);
+				viewPage ="Login.jsp";
+			}
+		}
+		else if(com.equals("/joinMember.do")) {
+			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

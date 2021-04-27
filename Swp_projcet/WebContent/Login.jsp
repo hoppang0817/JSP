@@ -16,7 +16,7 @@
 <body>
 
 
-	<style>
+<style>
 #img {
 	height: 90px;
 	display: block;
@@ -29,6 +29,11 @@
 			<h5 class="form-signin-heading">
 				<a href="#"><img src="./resources/img/a2.png" id="img"></a>
 			</h5>
+			<c:if test="${loginResult == -1 || loginResult == 0 }">
+				<div class="alert alert-danger">
+					아이디와 비밀번호를 확인해주세요.
+				</div>
+			</c:if>
 			<form action="LoginAction.do" class="form-signin" method="post">
 				<div class="form-group">
 					<label for="inputUserId" class="sr-only">User Id</label> 
