@@ -10,20 +10,32 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
-</head>
-<body>
-	<style>
+<style type="text/css">
 body, html {
 	height: 100%;
 }
 
+#demo a{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	text-decoration:none;
+}
+#demo1 a{
+ 	display: flex;
+    flex-direction: column;
+    align-items: center;
+ 	text-decoration:none;
+} 
 @media ( min-width : 768px) {
 	aside {
 		height: 100%;
 	}
 }
-</style>
 
+</style>
+</head>
+<body>
 	<div class="container-fluid ">
 		<div class="row h-100">
 			<aside class="col-12 col-md-2 p-0 bg-dark fixed-top">
@@ -35,18 +47,18 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0 text-nowrap" href="menu.jsp">
 								<i class="fa fa-bullseye fa-fw"></i> <span class="font-weight-bold">SWP</span></a>
 							</li>
-							<li class="nav-item dropdown"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<li class="nav-item"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="collapse" data-target="#demo">
 								<i class="far fa-heart"></i> <span class="d-none d-md-inline">회원 관리</span></a> <span class="caret"></span>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="JoinMember.jsp">회원 등록</a> 
-									<a class="dropdown-item" href="MemberList.do">회원 목록</a>
+								<div class="collapse" id="demo">
+									<a class="text-white" href="JoinMember.jsp">회원 등록</a> 
+									<a class="text-white" href="MemberList.do">회원 목록</a>
 								</div>
 							</li>
-							<li class="nav-item dropdown"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<li class="nav-item"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="collapse" data-target="#demo1">
 							<i class="fa fa-book fa-fw"></i> <span class="d-none d-md-inline">수업 관리</span></a><span class="caret"></span>
-								<div class="dropdown-menu">
-									<a class="dropdown-item" href="#">수업 개설</a> 
-									<a class="dropdown-item" href="#">수업 목록</a>
+								<div class="collapse" id="demo1">
+									<a class="text-white" href="#">수업 개설</a> 
+									<a class="text-white" href="#">수업 목록</a>
 								</div>
 								</li>
 							<li class="nav-item"><a class="nav-link pl-0" href="#"><i
