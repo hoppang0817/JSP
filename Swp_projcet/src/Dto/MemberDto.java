@@ -8,6 +8,7 @@ public class MemberDto {
 	private String m_arrd;
 	private String m_sex;
 	private String m_email;
+	private String email2;
 	private int c_num; //수업 번호
 	
 	
@@ -30,6 +31,28 @@ public class MemberDto {
 
 	
 	
+	public MemberDto(int m_id, String m_name, String m_phone, String m_arrd, String m_sex, String m_email,
+			String email2, int c_num) {
+		super();
+		this.m_id = m_id;
+		this.m_name = m_name;
+		this.m_phone = m_phone;
+		this.m_arrd = m_arrd;
+		this.m_sex = m_sex;
+		this.m_email = m_email;
+		this.email2 = email2;
+		this.c_num = c_num;
+	}
+
+	
+	public String getEmail2() {
+		return email2;
+	}
+
+	public void setEmail2(String email2) {
+		this.email2 = email2;
+	}
+
 	public String getM_email() {
 		return m_email;
 	}

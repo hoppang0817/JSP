@@ -38,7 +38,7 @@
 							<td>${mdto.m_sex}</td>
 							<td>${mdto.m_email}</td>
 							<td>${mdto.c_num}</td>
-							<td><a class="badge badge-primary" href="updateMember.do" >수정하기</a>
+							<td><a class="badge badge-primary" href="updateMemberView.do?m_id=${mdto.m_id}">수정하기</a>
 						</tr>
 					</c:forEach>
 				</tbody>
