@@ -106,24 +106,42 @@ public class MemberDao {
 			if(rs.next()) {
 				int m_id = rs.getInt("m_id");
 				String m_name = rs.getString("m_name");
-				String m_phone = rs.getString("m_phone");
-				String m_arrd = rs.getString("m_arrd");
+				
+				//전체 전화번호
+				String allphone = rs.getString("m_phone");
+				//중앙 번호(시작인덱스,마지막인덱스)
+				String m_phone = allphone.substring(4, 8);
+				//끝 번호
+				String lnum = allphone.substring(9,13);
+				
+				//전체 주소
+				String allarrd = rs.getString("m_arrd");
+				//전체 주소에서 기준이될 특정 부호의 인덱스를 구함
+				int idx1 = allarrd.indexOf(")");
+				int idx2 = allarrd.indexOf(",");
+				//특정부호 기준으로 시작인덱스,기준인덱스 까지 들고오기
+				String postCoed = allarrd.substring(1, idx1); //우편번호
+				String m_arrd = allarrd.substring(7, idx2);  //주소
+				//특정부호 뒤부분 내용들고오기
+				String arrd1 = allarrd.substring(idx2+1);  //상세주소
+				
 				String m_sex = rs.getString("m_sex");
 				
+				//이메일
 				String allemail = rs.getString("m_email");
 				// 먼저 @ 의 인덱스를 찾는다  
 				int idx = allemail.indexOf("@");
 				// @ 앞부분을 추출
 				// substring은 첫번째 지정한 인덱스는 포함하지 않는다.
 				// 아래의 경우는 첫번째 문자열 부터 추출된다.
-				String m_email = allemail.substring(0, idx);
-				
-				String email2 = allemail.substring(idx+1);
+				String m_email = allemail.substring(0, idx);  //이메일 앞부분
+				 
+				String email2 = allemail.substring(idx+1);   //이메일 뒷부분
 				
 			
 				int c_num = rs.getInt("c_num");
 				
-				dto = new MemberDto(m_id, m_name, m_phone, m_arrd, m_sex, m_email, email2, c_num);
+				dto = new MemberDto(m_id, m_name, m_phone, lnum, m_arrd, postCoed, arrd1, m_sex, m_email, email2, c_num);
 				
 			}
 		}catch (Exception e) {
