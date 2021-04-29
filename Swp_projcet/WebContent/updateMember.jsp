@@ -84,7 +84,7 @@
 				</div>
 			</div>
 				<br>
-			<input class="btn btn-primary" type="submit" value="수정하기">
+			<input class="btn btn-primary" type="submit" value="수정하기"> <a href="MemberList.do" class="btn btn-warning">취소</a>
 			</form>
 		</div>
 	</main>

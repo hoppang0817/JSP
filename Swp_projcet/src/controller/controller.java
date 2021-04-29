@@ -13,7 +13,11 @@ import javax.servlet.http.HttpSession;
 import Dao.StaffDao;
 import command.Command;
 import command.MemberList;
+import command.addClass;
 import command.addMember;
+import command.classList;
+import command.updateClass;
+import command.updateClassView;
 import command.updateMember;
 import command.updateMemberView;
 
@@ -85,6 +89,26 @@ public class controller extends HttpServlet {
 			command = new updateMember();
 			command.execute(request, response);
 			viewPage = "MemberList.do";
+		}
+		else if(com.equals("/ClassList.do")) {
+			command = new classList();
+			command.execute(request, response);
+			viewPage = "ClassList.jsp";
+		}
+		else if(com.equals("/addClass.do")) {
+			command = new addClass();
+			command.execute(request, response);
+			viewPage = "ClassList.do";
+		}
+		else if(com.equals("/updateClassView.do")) {
+			command = new updateClassView();
+			command.execute(request, response);
+			viewPage = "updateClass.jsp";
+		}
+		else if(com.equals("/updateClass.do")) {
+			command = new updateClass();
+			command.execute(request, response);
+			viewPage = "ClassList.do";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

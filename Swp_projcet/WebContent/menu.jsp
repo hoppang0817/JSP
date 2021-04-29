@@ -57,8 +57,8 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="collapse" data-target="#demo1">
 							<i class="fa fa-book fa-fw"></i> <span class="d-none d-md-inline">수업 관리</span></a><span class="caret"></span>
 								<div class="collapse" id="demo1">
-									<a class="text-white" href="#">수업 개설</a> 
-									<a class="text-white" href="#">수업 목록</a>
+									<a class="text-white" href="addClass.jsp">수업 개설</a> 
+									<a class="text-white" href="ClassList.do">수업 목록</a>
 								</div>
 								</li>
 							<li class="nav-item"><a class="nav-link pl-0" href="#"><i
