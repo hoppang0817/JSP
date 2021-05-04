@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.StaffDao;
+import command.joinClass;
+import command.joinClassView;
 import command.Command;
 import command.MemberList;
 import command.addClass;
@@ -72,15 +74,18 @@ public class controller extends HttpServlet {
 				request.setAttribute("loginResult", result);
 				viewPage = "Login.jsp";
 			}
-		} else if (com.equals("/joinMember.do")) {
+		} 
+		else if (com.equals("/joinMember.do")) {
 			command = new addMember();
 			command.execute(request, response);
 			viewPage = "MemberList.do";
-		} else if (com.equals("/MemberList.do")) {
+		} 
+		else if (com.equals("/MemberList.do")) {
 			command = new MemberList();
 			command.execute(request, response);
 			viewPage = "MemberList.jsp";
-		}else if(com.equals("/updateMemberView.do")) {
+		}
+		else if(com.equals("/updateMemberView.do")) {
 			command = new updateMemberView();
 			command.execute(request, response);
 			viewPage = "updateMember.jsp";
@@ -109,6 +114,21 @@ public class controller extends HttpServlet {
 			command = new updateClass();
 			command.execute(request, response);
 			viewPage = "ClassList.do";
+		}
+		else if(com.equals("/joinClassList.do")) {
+			command = new classList();
+			command.execute(request, response);
+			viewPage = "joinClassList.jsp";
+		}
+		else if(com.equals("/joinClassView.do")) {
+			command = new joinClassView();
+			command.execute(request, response);
+			viewPage = "joinClass.jsp";
+		}
+		else if(com.equals("/joinClass.do")) {
+			command = new joinClass();
+			command.execute(request, response);
+			viewPage ="joinClassList.do";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

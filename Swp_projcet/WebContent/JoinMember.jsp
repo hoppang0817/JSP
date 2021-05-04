@@ -75,12 +75,6 @@
 					<input type="radio"name="sex" value='여'/>여
 				</div>
 			</div>
-			<div class="form-group row">
-				<label class="control-lable col-sm-2">수강 수업</label>
-				<div class="col-sm-3">
-				   <input type="text" name="classNum" class="form-control">
-				</div>
-			</div>
 			<br>
 			<input class="btn btn-primary" type="submit" value="가입하기">  <a href="menu.jsp" class="btn btn-warning">취소</a>
 			

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import DBConnection.DBConnection;
 import Dto.ClassDto;
+import Dto.MemberDto;
 
 public class ClassDao {
 
@@ -139,5 +140,55 @@ public class ClassDao {
 		
 		return dto;
 		
+	}
+	
+	public ArrayList<MemberDto> ClassAppilcationView(String num) {
+		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("select * from  member where c_num =?");
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int m_id = rs.getInt("m_id");
+				String m_name = rs.getString("m_name");
+				String m_phone = rs.getString("m_phone");
+				String m_arrd = rs.getString("m_arrd");
+				String m_sex = rs.getString("m_sex");
+				String m_email = rs.getString("m_email");
+				int c_num = rs.getInt("c_num");
+				
+				MemberDto dto = new MemberDto(m_id, m_name, m_phone, m_arrd, c_num, m_sex, m_email);
+				list.add(dto);
+				
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		return list;
+		
+	}
+	public void ClassAppilcation(String num,String id) {
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("UPDATE member A INNER JOIN class B ON A.c_num = B.c_num SET A.c_num = ? WHERE A.m_id = ?");
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			pstmt.setInt(2, Integer.valueOf(id));
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}finally {
+			closeAll(null, pstmt, conn);
+		}
 	}
 }
