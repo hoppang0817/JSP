@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Dao.ClassDao;
+import Dao.paymentDao;
 
 public class joinClass implements Command {
 
@@ -12,7 +13,9 @@ public class joinClass implements Command {
 		String num = request.getParameter("c_num");
 		String id = request.getParameter("Id");
 		ClassDao dao = ClassDao.getInstance();
-		dao.ClassAppilcation(num, id);
+		paymentDao pdao = paymentDao.getInstance();
+		dao.joinClass(num, id);
+		pdao.insertpay(num, id);
 		
 	}
 

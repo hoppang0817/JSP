@@ -12,6 +12,8 @@ public class MemberDto {
 	private String m_sex;
 	private String m_email;
 	private String email2;
+	private String startDate;
+	private String endDate;
 	private int c_num; //수업 번호
 	
 	
@@ -51,6 +53,41 @@ public class MemberDto {
 	}
 
 	
+	
+	public MemberDto(int m_id, String m_name, String m_phone, String m_arrd, String m_sex, String m_email,
+			String startDate, String endDate, int c_num) {
+		super();
+		this.m_id = m_id;
+		this.m_name = m_name;
+		this.m_phone = m_phone;
+		this.m_arrd = m_arrd;
+		this.m_sex = m_sex;
+		this.m_email = m_email;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.c_num = c_num;
+	}
+
+	public String getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public void setLnum(String lnum) {
+		this.lnum = lnum;
+	}
+
 	public String getLnum() {
 		return lnum;
 	}

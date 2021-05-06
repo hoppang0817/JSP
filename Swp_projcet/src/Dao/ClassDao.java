@@ -142,7 +142,7 @@ public class ClassDao {
 		
 	}
 	
-	public ArrayList<MemberDto> ClassAppilcationView(String num) {
+	public ArrayList<MemberDto> joinClassView(String num) {
 		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
 		try {
 			StringBuffer sql = new StringBuffer();
@@ -175,7 +175,7 @@ public class ClassDao {
 		return list;
 		
 	}
-	public void ClassAppilcation(String num,String id) {
+	public void joinClass(String num,String id) {
 		try {
 			StringBuffer sql = new StringBuffer();
 			sql.append("UPDATE member A INNER JOIN class B ON A.c_num = B.c_num SET A.c_num = ? WHERE A.m_id = ?");

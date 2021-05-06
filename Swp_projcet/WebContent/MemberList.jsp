@@ -15,7 +15,7 @@
 			<h2>회원 목록</h2>
 		</div>
 		<div class="container">
-			<table class="table table-hover">
+			<table class="table table-hover w-auto">
 				<thead>
 					<tr>
 						<th>회원 번호</th>
@@ -25,6 +25,8 @@
 						<th>성별</th>
 						<th>이메일</th>
 						<th>수강 수업 </th>
+						<th>시작일</th>
+						<th>마지막일</th>
 						<th>회원 수정</th>
 					</tr>
 				</thead>
@@ -38,6 +40,8 @@
 							<td>${mdto.m_sex}</td>
 							<td>${mdto.m_email}</td>
 							<td>${mdto.c_num}</td>
+							<td>${mdto.startDate}</td>
+							<td>${mdto.endDate}</td>
 							<td><a class="badge badge-primary" href="updateMemberView.do?m_id=${mdto.m_id}">수정하기</a>
 						</tr>
 					</c:forEach>

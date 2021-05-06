@@ -15,7 +15,7 @@ public class joinClassView implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String num = request.getParameter("c_num");
 		ClassDao dao = ClassDao.getInstance();
-		ArrayList<MemberDto> dto = dao.ClassAppilcationView(num);
+		ArrayList<MemberDto> dto = dao.joinClassView(num);
 		
 		request.setAttribute("member_view", dto);
 		request.setAttribute("c_num", num);

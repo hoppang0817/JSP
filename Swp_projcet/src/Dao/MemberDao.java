@@ -66,7 +66,7 @@ public class MemberDao {
 		ArrayList<MemberDto> mdtos = new ArrayList<MemberDto>();
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("select * from member");
+			sql.append("select * from member a left join payment b on a.m_id=b.m_id");
 			conn =DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();
@@ -78,9 +78,11 @@ public class MemberDao {
 				String m_arrd = rs.getString("m_arrd");
 				String m_sex = rs.getString("m_sex");
 				String m_email = rs.getString("m_email");
+				String startDate = rs.getString("startDate");
+				String endDate = rs.getString("endDate");
 				int c_num = rs.getInt("c_num");
 				
-				MemberDto mdto = new MemberDto(m_id, m_name, m_phone, m_arrd, c_num, m_sex, m_email);
+				MemberDto mdto = new MemberDto(m_id, m_name, m_phone, m_arrd, m_sex, m_email, startDate, endDate, c_num);
 				mdtos.add(mdto);
 			}
 		}catch (Exception e) {
