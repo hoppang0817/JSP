@@ -1,0 +1,30 @@
+에플리케이션 - 액티비티 -뷰 -1.레이아웃
+                                     2. 뷰-버튼 텍스트뷰....위젯
+<>엘리먼트
+
+포함관계
+class A{               class B{
+Stirng name;
+int age;
+B b1;
+
+
+void add(){
+b1 = new B()
+}               
+}                        }
+
+
+상속관계
+<HTML>
+<HEAD>
+<BODY>
+
+
+match_parent - 부모(레이아웃)사이즈에 맞게 
+wrap_content - 자식(버튼일경우 안에 들어가 텍스트) 사이즈에 맞게
+
+
+1080p-pixel(높이) 1920(가로)
+
+010-3570-6996
