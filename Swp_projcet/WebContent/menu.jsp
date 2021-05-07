@@ -26,7 +26,12 @@ body, html {
     flex-direction: column;
     align-items: center;
  	text-decoration:none;
-} 
+}
+img{
+    width: 320px;
+    height: 200px;
+}
+
 @media ( min-width : 768px) {
 	aside {
 		height: 100%;
@@ -39,14 +44,13 @@ body, html {
 	<div class="container-fluid ">
 		<div class="row h-100">
 			<aside class="col-12 col-md-2 p-0 bg-dark fixed-top">
+					<div><a href="menu.jsp"><img src="resources/img/a1.png" ></a></div>
 				<nav
 					class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
 					<div class="collapse navbar-collapse align-items-start">
 						<ul
 							class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-							<li class="nav-item"><a class="nav-link pl-0 text-nowrap" href="menu.jsp">
-								<i class="fa fa-bullseye fa-fw"></i> <span class="font-weight-bold">SWP</span></a>
-							</li>
+						
 							<li class="nav-item"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="collapse" data-target="#demo">
 								<i class="far fa-heart"></i> <span class="d-none d-md-inline">회원 관리</span></a> <span class="caret"></span>
 								<div class="collapse" id="demo">
