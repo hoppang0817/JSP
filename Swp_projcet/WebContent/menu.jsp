@@ -65,8 +65,8 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0" href="#"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">보관함 관리</span></a>
 							</li>
-							<li class="nav-item"><a class="nav-link pl-0" href="#"><i
-									class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">마이페이지</span></a>
+							<li class="nav-item"><a class="nav-link pl-0" href="logout.jsp"><i
+									class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">로그아웃</span></a>
 							</li>
 						</ul>
 					</div>

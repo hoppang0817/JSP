@@ -42,7 +42,7 @@ public class controller extends HttpServlet {
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("actionDo");
-		// 한글 입력시 깨짐 방지
+		// ��湲� ���μ�� 源⑥� 諛⑹�
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 
