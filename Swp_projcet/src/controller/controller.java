@@ -13,10 +13,14 @@ import javax.servlet.http.HttpSession;
 import Dao.StaffDao;
 import command.joinClass;
 import command.joinClassView;
+import command.joinMemberList;
+import command.paymentList;
 import command.Command;
 import command.MemberList;
 import command.addClass;
 import command.addMember;
+import command.addpayment;
+import command.changeClass;
 import command.classList;
 import command.updateClass;
 import command.updateClassView;
@@ -78,8 +82,13 @@ public class controller extends HttpServlet {
 		else if (com.equals("/joinMember.do")) {
 			command = new addMember();
 			command.execute(request, response);
+			viewPage = "addpayment.do";
+		}
+		else if(com.equals("/addpayment.do")) {
+			command = new addpayment();
+			command.execute(request, response);
 			viewPage = "MemberList.do";
-		} 
+		}
 		else if (com.equals("/MemberList.do")) {
 			command = new MemberList();
 			command.execute(request, response);
@@ -129,6 +138,21 @@ public class controller extends HttpServlet {
 			command = new joinClass();
 			command.execute(request, response);
 			viewPage ="joinClassList.do";
+		}
+		else if(com.equals("/joinMemberList.do")) {
+			command = new joinMemberList();
+			command.execute(request, response);
+			viewPage = "joinClassView.do";
+		}
+		else if(com.equals("/changeClass.do")) {
+			command = new changeClass();
+			command.execute(request, response);
+			viewPage = "";
+		}
+		else if(com.equals("/paymentList.do")) {
+			command = new paymentList();
+			command.execute(request, response);
+			viewPage = "paymentView.jsp";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

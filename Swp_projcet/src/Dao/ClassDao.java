@@ -178,7 +178,7 @@ public class ClassDao {
 	public void joinClass(String num,String id) {
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("UPDATE member A INNER JOIN class B ON A.c_num = B.c_num SET A.c_num = ? WHERE A.m_id = ?");
+			sql.append("update member set c_num=? where m_id=?");
 			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, Integer.valueOf(num));

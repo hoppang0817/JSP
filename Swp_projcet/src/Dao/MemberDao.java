@@ -44,7 +44,7 @@ public class MemberDao {
 	
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into member(m_name,m_phone,m_arrd,m_sex,m_email,c_num) value(?,?,?,?,?,?)");
+			sql.append("insert into member(m_name,m_phone,m_arrd,m_sex,m_email) value(?,?,?,?,?)");
 			conn =DBConnection.getConnection();
 			pstmt=conn.prepareStatement(sql.toString());
 			pstmt.setString(1, name);
@@ -52,7 +52,7 @@ public class MemberDao {
 			pstmt.setString(3, arrd);
 			pstmt.setString(4, sex);
 			pstmt.setString(5, email);
-			pstmt.setInt(6, Integer.valueOf(classNum));
+
 			pstmt.executeUpdate();
 			
 		}catch (Exception e) {
@@ -62,11 +62,12 @@ public class MemberDao {
 		}
 		
 	}
+	
 	public ArrayList<MemberDto> MemberList() {
 		ArrayList<MemberDto> mdtos = new ArrayList<MemberDto>();
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("select * from member a left join payment b on a.m_id=b.m_id");
+			sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id order by m_id");
 			conn =DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 			rs = pstmt.executeQuery();

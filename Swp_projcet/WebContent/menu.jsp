@@ -27,11 +27,14 @@ body, html {
     align-items: center;
  	text-decoration:none;
 }
-img{
-    width: 320px;
-    height: 200px;
-}
 
+@media{
+	img{
+	 width: 100%;
+	 height:200px;
+	
+	}
+}
 @media ( min-width : 768px) {
 	aside {
 		height: 100%;
@@ -44,7 +47,7 @@ img{
 	<div class="container-fluid ">
 		<div class="row h-100">
 			<aside class="col-12 col-md-2 p-0 bg-dark fixed-top">
-					<div><a href="menu.jsp"><img src="resources/img/a1.png" ></a></div>
+					<a href="menu.jsp"><img src="resources/img/a1.png" ></a>
 				<nav
 					class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
 					<div class="collapse navbar-collapse align-items-start">
@@ -64,8 +67,12 @@ img{
 									<a class="text-white" href="joinClassList.do">수업 신청</a> 
 									<a class="text-white" href="addClass.jsp">수업 개설</a> 
 									<a class="text-white" href="ClassList.do">수업 목록</a>
+									<a class="text-white" href="changeClass.do">수업 변경</a>
 								</div>
 								</li>
+							<li class="nav-item"><a class="nav-link pl-0" href="paymentView.jsp"><i
+									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">결제 관리</span></a>
+							</li>
 							<li class="nav-item"><a class="nav-link pl-0" href="#"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">보관함 관리</span></a>
 							</li>
