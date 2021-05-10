@@ -67,7 +67,7 @@ body, html {
 									<a class="text-white" href="joinClassList.do">수업 신청</a> 
 									<a class="text-white" href="addClass.jsp">수업 개설</a> 
 									<a class="text-white" href="ClassList.do">수업 목록</a>
-									<a class="text-white" href="changeClass.do">수업 변경</a>
+									<a class="text-white" href="changeClassView.do">수업 변경</a>
 								</div>
 								</li>
 							<li class="nav-item"><a class="nav-link pl-0" href="paymentView.jsp"><i

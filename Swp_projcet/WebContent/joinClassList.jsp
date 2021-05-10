@@ -66,18 +66,21 @@
 						</div>
 						<div class="modal-body">
 							<table class="table table-hover" id ="table-1">
-			<thead>
-				<tr>
-					<th>회원 번호</th>
-					<th>이름</th>
-					<th>전화번호</th>
-					<th>주소</th>
-					<th>성별</th>
-					<th>이메일</th>
-				</tr>
-				</thead>
-				
-			</table>
+							<thead>
+								<tr>
+									<th>회원 번호</th>
+									<th>이름</th>
+									<th>시작 일</th>
+									<th>마지막 일</th>
+								</tr>
+							</thead>
+								<tbody>
+								<c:forEach items="${list}" var="list">
+								<td>${list.c_num}</td>
+								<td>${list.c_name}</td>
+								</c:forEach>
+							</tbody>
+							</table>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-default"
