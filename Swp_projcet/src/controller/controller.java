@@ -20,6 +20,7 @@ import command.MemberList;
 import command.addClass;
 import command.addMember;
 import command.addpayment;
+import command.changeClass;
 import command.changeClassView;
 import command.classList;
 import command.updateClass;
@@ -148,6 +149,11 @@ public class controller extends HttpServlet {
 			command = new changeClassView();
 			command.execute(request, response);
 			viewPage = "changeClass.jsp";
+		}
+		else if(com.equals("/changeClass.do")) {
+			command = new changeClass();
+			command.execute(request, response);
+			viewPage = "changeClassView.do";
 		}
 		else if(com.equals("/paymentList.do")) {
 			command = new paymentList();
