@@ -191,4 +191,21 @@ public class ClassDao {
 			closeAll(null, pstmt, conn);
 		}
 	}
+	
+	public void changeClass(String id ,String num) {
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("update member set c_num=? where m_id=?");
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			pstmt.setInt(2, Integer.valueOf(id));
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(null, pstmt, conn);
+		}
+		
+	}
 }

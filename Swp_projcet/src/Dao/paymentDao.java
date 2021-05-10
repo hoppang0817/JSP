@@ -104,6 +104,23 @@ public class paymentDao {
 		return list;
 		
 	}
+	
+	public void changepayment(String id, String num) {
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("update payment set c_num=? where m_id=? ORDER BY p_no DESC LIMIT 1");
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			pstmt.setInt(2, Integer.valueOf(id));
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(null, pstmt, conn);
+		}
+
+	}
 
 
 }
