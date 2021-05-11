@@ -44,6 +44,7 @@
 						<th>수강 수업 </th>
 						<th>시작일</th>
 						<th>마지막일</th>
+						<th>반번호</th>
 					</tr>
 				</thead>
 				<tbody>

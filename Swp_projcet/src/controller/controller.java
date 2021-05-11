@@ -23,6 +23,7 @@ import command.addpayment;
 import command.changeClass;
 import command.changeClassView;
 import command.classList;
+import command.endDayMember;
 import command.updateClass;
 import command.updateClassView;
 import command.updateMember;
@@ -159,6 +160,11 @@ public class controller extends HttpServlet {
 			command = new paymentList();
 			command.execute(request, response);
 			viewPage = "paymentView.jsp";
+		}
+		else if(com.equals("/endDayMember.do")) {
+			command = new endDayMember();
+			command.execute(request, response);
+			viewPage = "MemberList.do";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

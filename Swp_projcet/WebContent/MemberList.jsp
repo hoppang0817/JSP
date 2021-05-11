@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<!-- 시스템 날짜를 불러옴 -->
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />  
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +40,7 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="mdto">
-						<tr>
+						<tr <c:if test="${mdto.endDate < today}">class="table-danger" onClick="location.href='endDayMember?m_id=${mdto.m_id}'"</c:if>>
 							<td>${mdto.m_id}</td>
 							<td>${mdto.m_name}</td>
 							<td>${mdto.m_phone}</td>
@@ -42,7 +50,7 @@
 							<td>${mdto.c_num}</td>
 							<td>${mdto.startDate}</td>
 							<td>${mdto.endDate}</td>
-							<td><a class="badge badge-primary" href="updateMemberView.do?m_id=${mdto.m_id}">수정하기</a>
+							<td><a class="badge badge-primary" href="updateMemberView.do?m_id=${mdto.m_id}">수정하기</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>

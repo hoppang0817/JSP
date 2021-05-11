@@ -110,36 +110,36 @@ public class MemberDao {
 				int m_id = rs.getInt("m_id");
 				String m_name = rs.getString("m_name");
 				
-				//전체 전화번호
+				//��泥� ����踰���
 				String allphone = rs.getString("m_phone");
-				//중앙 번호(시작인덱스,마지막인덱스)
+				//以��� 踰���(�����몃�깆��,留�吏�留��몃�깆��)
 				String m_phone = allphone.substring(4, 8);
-				//끝 번호
+				//�� 踰���
 				String lnum = allphone.substring(9,13);
 				
-				//전체 주소
+				//��泥� 二쇱��
 				String allarrd = rs.getString("m_arrd");
-				//전체 주소에서 기준이될 특정 부호의 인덱스를 구함
+				//��泥� 二쇱������ 湲곗��대�� �뱀�� 遺��몄�� �몃�깆�ㅻ�� 援ы��
 				int idx1 = allarrd.indexOf(")");
 				int idx2 = allarrd.indexOf(",");
-				//특정부호 기준으로 시작인덱스,기준인덱스 까지 들고오기
-				String postCoed = allarrd.substring(1, idx1); //우편번호
-				String m_arrd = allarrd.substring(7, idx2);  //주소
-				//특정부호 뒤부분 내용들고오기
-				String arrd1 = allarrd.substring(idx2+1);  //상세주소
+				//�뱀��遺��� 湲곗��쇰� �����몃�깆��,湲곗��몃�깆�� 源�吏� �ㅺ��ㅺ린
+				String postCoed = allarrd.substring(1, idx1); //�고�몃���
+				String m_arrd = allarrd.substring(7, idx2);  //二쇱��
+				//�뱀��遺��� �ㅻ�遺� �댁�⑸�ㅺ��ㅺ린
+				String arrd1 = allarrd.substring(idx2+1);  //���몄＜��
 				
 				String m_sex = rs.getString("m_sex");
 				
-				//이메일
+				//�대���
 				String allemail = rs.getString("m_email");
-				// 먼저 @ 의 인덱스를 찾는다  
+				// 癒쇱�� @ �� �몃�깆�ㅻ�� 李얜����  
 				int idx = allemail.indexOf("@");
-				// @ 앞부분을 추출
-				// substring은 첫번째 지정한 인덱스는 포함하지 않는다.
-				// 아래의 경우는 첫번째 문자열 부터 추출된다.
-				String m_email = allemail.substring(0, idx);  //이메일 앞부분
+				// @ ��遺�遺��� 異�異�
+				// substring�� 泥ル�吏� 吏����� �몃�깆�ㅻ�� �ы�⑦��吏� ������.
+				// ������ 寃쎌�곕�� 泥ル�吏� 臾몄���� 遺��� 異�異�����.
+				String m_email = allemail.substring(0, idx);  //�대��� ��遺�遺�
 				 
-				String email2 = allemail.substring(idx+1);   //이메일 뒷부분
+				String email2 = allemail.substring(idx+1);   //�대��� �룸�遺�
 				
 			
 				int c_num = rs.getInt("c_num");
@@ -172,6 +172,21 @@ public class MemberDao {
 			pstmt.setInt(7, Integer.valueOf(id));
 			pstmt.executeUpdate();
 		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(null, pstmt, conn);
+		}
+	}
+	
+	public void endDayMember(String id) {
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("update member set c_num =null where m_id=?");
+			conn = DBConnection.getConnection();
+			pstmt= conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(id));
+			pstmt.executeUpdate();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			closeAll(null, pstmt, conn);
