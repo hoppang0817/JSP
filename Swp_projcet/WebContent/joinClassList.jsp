@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,6 @@
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
@@ -43,55 +43,57 @@
 							<c:when test ="${list.count < list.c_limitedNum}"> onClick="location.href='joinClassView.do?c_num=${list.c_num}'" class="btn btn-primary btn-sm"</c:when>
 							<c:otherwise>class="btn btn-danger btn-sm"  disabled="disabled"</c:otherwise>
 							</c:choose>>신청</button></td>
-							<!-- Button trigger modal -->
-							<td><button class="btn btn-primary btn-sm"
-									type="button" data-toggle="modal" data-target="#myModal">목록</button></td>
+						<td><a class="ls-modal btn btn-default" data-toggle="modal"
+							data-remote="layer.jsp" data-target="#modal">모달출력버튼</a></td>
 						</tr>
+						<!-- Button trigger modal -->
 					</c:forEach>
-
+					
 				</tbody>
 			</table>
 			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal fade" id="modal" role="dialog">
 				<div class="modal-dialog">
 					<div class="modal-content">
 						<div class="modal-header">
-
-							<h4 class="modal-title" id="myModalLabel">회원목록</h4>
-							<button class="close" type="button" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">X</span>
-							</button>
+							<!-- 닫기(x) 버튼 -->
+							<button type="button" class="close" data-dismiss="modal">×</button>
+							<!-- header title -->
+							<h4 class="modal-title">Header</h4>
 						</div>
-						<div class="modal-body">
-							<table class="table table-hover" id ="table-1">
-							<thead>
-								<tr>
-									<th>회원 번호</th>
-									<th>이름</th>
-									<th>시작 일</th>
-									<th>마지막 일</th>
-								</tr>
-							</thead>
-								<tbody>
-								<c:forEach items="${list}" var="list">
-								<td>${list.c_num}</td>
-								<td>${list.c_name}</td>
-								</c:forEach>
-							</tbody>
-							</table>
-						</div>
+						<!-- body -->
+						<div class="modal-body"></div>
+						<!-- Footer -->
 						<div class="modal-footer">
+							Footer
 							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save
-								changes</button>
+								data-dismiss="modal">닫기</button>
 						</div>
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</main>
+<script type="text/javascript">
+	/*	$(function() {
+	 $("#popbutton").click(function() {
+	 $('div.modal').modal({
+	 remote : 'layer.html'
+	 });
+	 })
+	 })*/
+
+	 $('#modal').on('show.bs.modal',function(e){
+		 var button = $(e.relatedTarget);
+		 var model = $(this);
+		 model.find('.modal-body'.load(button.date("remote"))) 
+	});
+	
+	 $('.ls-modal').on('click', function(e){
+		  e.preventDefault();
+		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));
+		});
+</script>
 </body>
 </html>
