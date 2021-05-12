@@ -43,29 +43,30 @@
 							<c:when test ="${list.count < list.c_limitedNum}"> onClick="location.href='joinClassView.do?c_num=${list.c_num}'" class="btn btn-primary btn-sm"</c:when>
 							<c:otherwise>class="btn btn-danger btn-sm"  disabled="disabled"</c:otherwise>
 							</c:choose>>신청</button></td>
-						<td><a class="ls-modal btn btn-default" data-toggle="modal"
-							data-remote="layer.jsp" data-target="#modal">모달출력버튼</a></td>
+							<!-- 모달창 열수있는 버튼 -->
+						<td><a class="ls-modal btn btn-outline-primary" data-toggle="modal"
+							href="modalList.do?c_num=${list.c_num}" data-target="#modal">보기</a></td>
 						</tr>
-						<!-- Button trigger modal -->
 					</c:forEach>
 					
 				</tbody>
 			</table>
 			<!-- Modal -->
-			<div class="modal fade" id="modal" role="dialog">
-				<div class="modal-dialog">
+			<div class="modal fade" id="modal" >
+				<div class="modal-dialog modal-lg">
 					<div class="modal-content">
 						<div class="modal-header">
 							<!-- 닫기(x) 버튼 -->
+							<h4 class="modal-title">회원 목록</h4>
 							<button type="button" class="close" data-dismiss="modal">×</button>
 							<!-- header title -->
-							<h4 class="modal-title">Header</h4>
 						</div>
+						
 						<!-- body -->
 						<div class="modal-body"></div>
+						
 						<!-- Footer -->
 						<div class="modal-footer">
-							Footer
 							<button type="button" class="btn btn-default"
 								data-dismiss="modal">닫기</button>
 						</div>
@@ -75,21 +76,8 @@
 
 		</div>
 	</main>
-<script type="text/javascript">
-	/*	$(function() {
-	 $("#popbutton").click(function() {
-	 $('div.modal').modal({
-	 remote : 'layer.html'
-	 });
-	 })
-	 })*/
-
-	 $('#modal').on('show.bs.modal',function(e){
-		 var button = $(e.relatedTarget);
-		 var model = $(this);
-		 model.find('.modal-body'.load(button.date("remote"))) 
-	});
 	
+<script type="text/javascript">
 	 $('.ls-modal').on('click', function(e){
 		  e.preventDefault();
 		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));

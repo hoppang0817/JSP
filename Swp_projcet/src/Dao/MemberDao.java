@@ -193,4 +193,36 @@ public class MemberDao {
 		}
 	}
 	
+	public ArrayList<MemberDto> modalList(String num){
+		ArrayList<MemberDto>list = new ArrayList<MemberDto>();
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("select * from member where c_num=?");
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				int m_id = rs.getInt("m_id");
+				String m_name = rs.getString("m_name");
+				String m_phone = rs.getString("m_phone");
+				String m_arrd = rs.getString("m_arrd");
+				String m_email = rs.getString("m_email");
+				String m_sex = rs.getString("m_sex");
+				MemberDto dto = new MemberDto();
+				dto.setM_id(m_id);
+				dto.setM_name(m_name);
+				dto.setM_phone(m_phone);
+				dto.setM_arrd(m_arrd);
+				dto.setM_email(m_email);
+				dto.setM_sex(m_sex);
+				list.add(dto);
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return list;
+	}
 }

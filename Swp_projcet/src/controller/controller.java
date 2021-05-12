@@ -14,6 +14,7 @@ import Dao.StaffDao;
 import command.joinClass;
 import command.joinClassView;
 import command.joinMemberList;
+import command.modalList;
 import command.paymentList;
 import command.Command;
 import command.MemberList;
@@ -165,6 +166,11 @@ public class controller extends HttpServlet {
 			command = new endDayMember();
 			command.execute(request, response);
 			viewPage = "MemberList.do";
+		}
+		else if(com.equals("/modalList.do")) {
+			command = new modalList();
+			command.execute(request, response);
+			viewPage ="layer.jsp";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
