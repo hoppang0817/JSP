@@ -9,7 +9,13 @@
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
+<style type="text/css">
+tr{
+	height: 120px
+}
+</style>
 </head>
+
 <body>
 <jsp:include page="menu.jsp" />
 	<main class="col offset-sm-1 bg-faded">
@@ -18,34 +24,15 @@
 		</div>
 		<div class="container">
 			<table border="2" class="table table">
-			<tr style="height: 120px">
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
-				<td>4</td>
-				<td>5</td>				
+			<c:forEach begin="1" end="4">
+			<tr>
+			<c:forEach begin="1" end="5" items="${list}" var="list">
+			<td>
+			${list.l_num}
+			</td>
+			</c:forEach>
 			</tr>
-			<tr style="height: 120px">
-				<td>6</td>
-				<td>7</td>
-				<td>8</td>
-				<td>9</td>
-				<td>10</td>				
-			</tr>
-			<tr style="height: 120px">
-				<td>11</td>
-				<td>12</td>
-				<td>13</td>
-				<td>14</td>
-				<td>15</td>				
-			</tr>
-			<tr style="height: 120px">
-				<td>16</td>
-				<td>17</td>
-				<td>18</td>
-				<td>19</td>
-				<td>20</td>				
-			</tr>
+			</c:forEach>
 			</table>
 		</div>
 	</main>

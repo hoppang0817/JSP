@@ -14,6 +14,7 @@ import Dao.StaffDao;
 import command.joinClass;
 import command.joinClassView;
 import command.joinMemberList;
+import command.lockerList;
 import command.modalList;
 import command.paymentList;
 import command.Command;
@@ -171,6 +172,11 @@ public class controller extends HttpServlet {
 			command = new modalList();
 			command.execute(request, response);
 			viewPage ="layer.jsp";
+		}
+		else if(com.equals("/locker.do")) {
+			command = new lockerList();
+			command.execute(request, response);
+			viewPage ="locker.jsp";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

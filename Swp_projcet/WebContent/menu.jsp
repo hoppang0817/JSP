@@ -73,7 +73,7 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0" href="paymentView.jsp"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">결제 관리</span></a>
 							</li>
-							<li class="nav-item"><a class="nav-link pl-0" href="locker.jsp"><i
+							<li class="nav-item"><a class="nav-link pl-0" href="locker.do"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">보관함 관리</span></a>
 							</li>
 							<li class="nav-item"><a class="nav-link pl-0" href="logout.jsp"><i
