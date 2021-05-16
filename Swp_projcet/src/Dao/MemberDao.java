@@ -40,7 +40,26 @@ public class MemberDao {
 		}
 	}
 	
-	public void addMember(String name,String phone,String arrd,String sex,String email,String classNum) {
+	   public int nextid() {
+		      int nextid1 =0;
+		      try {
+		         StringBuffer sql = new StringBuffer();
+		         sql.append("select max(m_id)+1 as nextid from member");
+		         conn =DBConnection.getConnection();
+		         pstmt = conn.prepareStatement(sql.toString());
+		         rs = pstmt.executeQuery();
+		         if(rs.next()) {
+		            int nextid = rs.getInt("nextid");
+		            nextid1 = nextid;
+		         }
+		      } catch (Exception e) {
+		         e.printStackTrace();
+		      }
+		      return nextid1;
+		   }
+
+
+	   public void addMember(String name,String phone,String arrd,String sex,String email,String classNum) {
 	
 		try {
 			StringBuffer sql = new StringBuffer();

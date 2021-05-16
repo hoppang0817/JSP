@@ -42,13 +42,14 @@ public class LockerDao {
 		}
 	}
 	
-	public void LockerUesr(String id) {
+	public void LockerUesr(String num,String id) {
 		try {
 			conn = DBConnection.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into locker(l_start,l_end,m_id) value(now(),(select date_add(now(),interval+1 month)),?)");
+			sql.append("update locker set l_start=now(),l_end=(select date_add(now(),interval+1 month)),m_id=? where l_num=?");
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setInt(1, Integer.valueOf(id));
+			pstmt.setInt(2, Integer.valueOf(num));
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,6 +80,21 @@ public class LockerDao {
 		}
 		return list;
 		
+	}
+	
+	public void extend(String num) {
+		try {
+			conn = DBConnection.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("update locker set l_end=(select date_add(l_end,interval+1 month))where l_num=?");
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeAll(conn, pstmt, null);
+		}
 	}
 	
 }

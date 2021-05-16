@@ -16,6 +16,7 @@
 			<h2>회원 등록</h2>
 			<br>
 			<form action="joinMember.do" class="form-horizontal" method="post">
+			<input name="id" type="hidden" value="${id}" > 
 				<%--<div class="form-group row">
 					<label class="control-lable col-sm-2">아이디</label>
 					<div class="col-sm-3">

@@ -57,7 +57,7 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="collapse" data-target="#demo">
 								<i class="far fa-heart"></i> <span class="d-none d-md-inline">회원 관리</span></a> <span class="caret"></span>
 								<div class="collapse" id="demo">
-									<a class="text-white" href="JoinMember.jsp">회원 등록</a> 
+									<a class="text-white" href="nextid.do">회원 등록</a> 
 									<a class="text-white" href="MemberList.do">회원 목록</a>
 								</div>
 							</li>
@@ -75,6 +75,9 @@ body, html {
 							</li>
 							<li class="nav-item"><a class="nav-link pl-0" href="locker.do"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">보관함 관리</span></a>
+							</li>
+							<li class="nav-item"><a class="nav-link pl-0" href="checkMember.jsp"><i
+									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">출석 체크</span></a>
 							</li>
 							<li class="nav-item"><a class="nav-link pl-0" href="logout.jsp"><i
 									class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">로그아웃</span></a>
