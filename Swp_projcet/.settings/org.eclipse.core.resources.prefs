@@ -2,5 +2,6 @@ eclipse.preferences.version=1
 encoding//WebContent/layer.jsp=UTF-8
 encoding//WebContent/logout.jsp=UTF-8
 encoding//src/Dao/MemberDao.java=UTF-8
+encoding//src/command/addMember.java=UTF-8
 encoding//src/controller/controller.java=UTF-8
 encoding/<project>=UTF-8

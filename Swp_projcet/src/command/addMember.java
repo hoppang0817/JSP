@@ -1,13 +1,10 @@
 package command;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
-import javax.imageio.ImageIO;
-import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -44,12 +41,12 @@ public class addMember implements Command {
 		
 		
 		
-		//바코드 이미지 저장
+		//諛�肄��� �대�몄� ����
 		String str = id;
         try {
              Barcode barcode = BarcodeFactory.createCode128(str);
              System.out.println(barcode);
-             String dirPath = "C:\\upload\\"; // 이미지 파일 생성될 경로
+             String dirPath = "C:\\upload\\"; // �대�몄� ���� ���깅�� 寃쎈�
              String filePath = dirPath+id+".png";
              File cImg = new File(filePath);
              BarcodeImageHandler.savePNG(barcode, cImg);
@@ -60,7 +57,7 @@ public class addMember implements Command {
 		
 //		BufferedImage image1 = null; 
 //		try {
-//		//로컬 파일을 사용하는 경우
+//		//濡�而� ���쇱�� �ъ�⑺���� 寃쎌��
 //		File imageFile = new File("C:\\upload\\"+id+".png"); 
 //		image1 = ImageIO.read(imageFile);
 //		}catch (Exception e) {
@@ -69,7 +66,7 @@ public class addMember implements Command {
 
 
 		final String user="tndusdlzzz__@naver.com";
-		final String password="hoppang0817";
+		final String password="";
 		
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.naver.com");
@@ -86,22 +83,22 @@ public class addMember implements Command {
 		try { 
 			MimeMessage message = new MimeMessage(session); 
 			message.setFrom(new InternetAddress(user));
-			//수신자 이메일
+			//������ �대���
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress("tndusdlzzz__@naver.com")); 
-			//이메일 제목
+			//�대��� ��紐�
 			message.setSubject("KTKO SMTP TEST1111"); 
 			
 			
 		      MimeBodyPart mbp1 = new MimeBodyPart();
 		      
-		      	//내용
-	            mbp1.setText("가입을 축하합니다 "+name+" 회원님 \n 회원번호: "+ id+" 입니다.");
+		      	//�댁��
+	            mbp1.setText("媛����� 異����⑸���� "+name+" ������ \n ����踰���: "+ id+" ������.");
 	            
 	            
 	            String fileaddress="C:\\upload\\"+id+".png";
 	            MimeBodyPart mbp2 = new MimeBodyPart();
-	            FileDataSource  fds = new FileDataSource(fileaddress); //파일 읽어오기
-	            mbp2.setDataHandler(new DataHandler(fds));                      //파일 첨부
+	            FileDataSource  fds = new FileDataSource(fileaddress); //���� �쎌�댁�ㅺ린
+	            mbp2.setDataHandler(new DataHandler(fds));                      //���� 泥⑤�
 	            mbp2.setFileName(fds.getName());
 	            
 	            Multipart mp = new MimeMultipart();
@@ -113,8 +110,8 @@ public class addMember implements Command {
 	            Transport.send(message);
 	            
 	            
-//			//내용
-//			message.setText("가입을 축하합니다 "+name+" 회원님 \n 회원번호: "+ id+" 입니다. \n"+ image1);
+//			//�댁��
+//			message.setText("媛����� 異����⑸���� "+name+" ������ \n ����踰���: "+ id+" ������. \n"+ image1);
 //			// send the message 
 //			Transport.send(message); 
 	            
