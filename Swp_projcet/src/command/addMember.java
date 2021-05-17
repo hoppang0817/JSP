@@ -65,7 +65,7 @@ public class addMember implements Command {
 //		}
 
 
-		final String user="tndusdlzzz__@naver.com";
+		final String user="";
 		final String password="";
 		
 		Properties prop = new Properties();
@@ -84,7 +84,7 @@ public class addMember implements Command {
 			MimeMessage message = new MimeMessage(session); 
 			message.setFrom(new InternetAddress(user));
 			//������ �대���
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress("tndusdlzzz__@naver.com")); 
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); 
 			//�대��� ��紐�
 			message.setSubject("KTKO SMTP TEST1111"); 
 			
