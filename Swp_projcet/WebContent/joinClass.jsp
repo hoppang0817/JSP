@@ -20,10 +20,39 @@
 				<div class="form-group row">
 					<label class="control-lable col-sm-2"> 회원 번호</label>
 					<div class="col-sm-3">
-					   <input type="text" name="Id"	class="form-control"></div>
+					   <input type="text" name="Id"	class="form-control">
+					 </div>
+					 <div>
+					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findId.jsp">검색</a>
 					<input class ="btn btn-primary" type="submit" value="신청">
+					</div>
 				</div>
 			</form>
+			
+				<!-- Modal -->
+			<div class="modal fade" id="modal" >
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<!-- 닫기(x) 버튼 -->
+							<h4 class="modal-title">회원 검색</h4>
+							<button type="button" class="close" data-dismiss="modal">×</button>
+							<!-- header title -->
+						</div>
+						
+						<!-- body -->
+						<div class="modal-body"></div>
+						
+						<!-- Footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">닫기</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			
 		<div class="container">
 			<table class="table table-hover" id ="table-1">
 			<thead>
@@ -53,5 +82,11 @@
 		</div>
 		</div>
 	</main>
+<script type="text/javascript">
+	 $('.ls-modal').on('click', function(e){
+		  e.preventDefault();
+		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));
+		});
+</script>
 </body>
 </html>

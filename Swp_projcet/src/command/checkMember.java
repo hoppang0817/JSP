@@ -11,7 +11,17 @@ public class checkMember implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		checkDao dao = checkDao.getInstance();
 		String id = request.getParameter("m_id");
-		dao.checkMember(id);
+		int cnt = dao.list(id);
+		if(cnt == 1) {
+			request.setAttribute("cnt", cnt);
+		}
+		else if(cnt == 0) {
+			dao.checkMember(id);
+			request.setAttribute("cnt", cnt);
+		}
+		else if(cnt == -1) {
+			request.setAttribute("cnt", cnt);
+		}
 	}
 
 }

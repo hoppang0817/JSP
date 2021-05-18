@@ -30,6 +30,7 @@ import command.checkMember;
 import command.classList;
 import command.endDayMember;
 import command.extend;
+import command.findId;
 import command.inputUesr;
 import command.updateClass;
 import command.updateClassView;
@@ -222,6 +223,12 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage ="checkMember.jsp";
 		}
+		else if(com.equals("/findId.do")) {
+			command = new findId();
+			command.execute(request, response);
+			viewPage = "findId.jsp";
+		}
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
