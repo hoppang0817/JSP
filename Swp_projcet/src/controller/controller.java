@@ -223,10 +223,13 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage ="checkMember.jsp";
 		}
+		else if(com.equals("/findIdview.do")) {
+			viewPage = "findId.jsp";
+		}
 		else if(com.equals("/findId.do")) {
 			command = new findId();
 			command.execute(request, response);
-			viewPage = "findId.jsp";
+			viewPage = "findIdview.do";
 		}
 		
 

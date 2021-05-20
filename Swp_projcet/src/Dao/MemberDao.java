@@ -250,9 +250,9 @@ public class MemberDao {
 		try {
 			conn = DBConnection.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select * from member where m_name=?");
+			sql.append("select * from member where m_name like ? ");
 			pstmt = conn.prepareStatement(sql.toString());
-			pstmt.setString(1, name);
+			pstmt.setString(1, "%"+name+"%");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int m_id = rs.getInt("m_id");

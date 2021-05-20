@@ -21,11 +21,28 @@
 				<input class="btn btn-primary" type="submit" value="검색">
 			</div>
 		</form>
-		<table>
-		<c:forEach items="${list}" var="list">
-		
-		</c:forEach>
-		</table>
+		<div class="container">
+			<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>회원번호</th>
+					<th>회원 이름</th>
+					<th>전화번호</th>
+					<th>이메일</th>
+				</tr>
+			</thead>
+			<tbody>
+			<c:forEach items="${list}" var="list">
+				<tr>
+					<td>${list.m_id }</td>
+					<td>${list.m_name }</td>
+					<td>${list.m_phone }</td>
+					<td>${list.m_email }</td>
+				</tr>
+			</c:forEach>
+			</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

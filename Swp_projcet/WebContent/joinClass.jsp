@@ -23,7 +23,7 @@
 					   <input type="text" name="Id"	class="form-control">
 					 </div>
 					 <div>
-					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findId.jsp">검색</a>
+					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findIdview.do">검색</a>
 					<input class ="btn btn-primary" type="submit" value="신청">
 					</div>
 				</div>
