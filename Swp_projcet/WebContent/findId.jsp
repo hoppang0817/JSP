@@ -7,8 +7,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
-<script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -20,10 +19,12 @@
 				<div class="col-sm-4">
 					<input id="name" type="text" name="name" class="form-control">
 				</div>
-				<input id="btn_search" class="btn btn-primary" value="검색">
+				<div>
+				<button id="btn_search" class="btn btn-primary">검색</button>
+				</div>
 			</div>
 		</form>
-		<div class="container">
+		<div id="div1" class="container">
 			<table class="table table-hover">
 			<thead>
 				<tr>
@@ -34,7 +35,12 @@
 				</tr>
 			</thead>
 			<tbody>
+			<c:forEach items="${list }" var="list">
+				<tr>
+					<td>${list.m_id}</td>
+				</tr>
 			
+			</c:forEach>
 			</tbody>
 			</table>
 		</div>
@@ -42,17 +48,19 @@
 	<script type="text/javascript">
 	$(function() {
 		$("#btn_search").click(function() {
-			var params= $("#name").val();
+			console.log(params);
 			$.ajax({
-				url:'findId.do',
-				type:'POST',
-				date:params,
-				success:
-				
+				url:'/findId.do',
+				console.log(url),
+				type:'GET',
+				date:{name:$("#name").val()},
+				success:function(data){
+				    alert("가져온 데이터 입니다 . "+data);
+					
 			})
 			
 		})
-	})
+	});
 	</script>
 </body>
 </html>
