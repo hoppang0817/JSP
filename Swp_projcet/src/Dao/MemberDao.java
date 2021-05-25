@@ -115,6 +115,53 @@ public class MemberDao {
 		
 	}
 	
+	public ArrayList<MemberDto> searchList(String search, String searchKey){
+		ArrayList<MemberDto> mdtos = new ArrayList<MemberDto>();
+		try {
+			conn = DBConnection.getConnection();
+			StringBuffer sql = new StringBuffer();
+			
+			if(search.equals("m_name") && searchKey != null) {
+				sql.append("select a.*, max(b.startDate) as startDate, max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having m_name like ? order by m_id");
+				pstmt = conn.prepareStatement(sql.toString());
+				pstmt.setString(1, "%"+searchKey+"%");
+			}
+			else if(search.equals("m_id") && searchKey != null) {
+				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having m_id=? order by m_id");
+				pstmt = conn.prepareStatement(sql.toString());
+				pstmt.setInt(1, Integer.valueOf(searchKey));
+			}
+			else{
+				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id order by m_id");
+				pstmt = conn.prepareStatement(sql.toString());
+			}
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				int m_id = rs.getInt("m_id");
+				String m_name = rs.getString("m_name");
+				String m_phone = rs.getString("m_phone");
+				String m_arrd = rs.getString("m_arrd");
+				String m_sex = rs.getString("m_sex");
+				String m_email = rs.getString("m_email");
+				String startDate = rs.getString("startDate");
+				String endDate = rs.getString("endDate");
+				int c_num = rs.getInt("c_num");
+				
+				MemberDto mdto = new MemberDto(m_id, m_name, m_phone, m_arrd, m_sex, m_email, startDate, endDate, c_num);
+				mdtos.add(mdto);
+			}
+			
+		}catch (Exception e){
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		return mdtos;
+	
+	}
+	
 	public MemberDto updateView(String id) {
 		MemberDto dto =null;
 		try {

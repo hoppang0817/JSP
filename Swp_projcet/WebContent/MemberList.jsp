@@ -23,6 +23,24 @@
 			<h2>회원 목록</h2>
 		</div>
 		<div class="container">
+			<form action="searchList.do">
+				<div class="form-group row">
+					<div class="col-sm-2">
+						<select name="search" class="form-control">
+							<option value="m_id">회원번호</option>
+							<option value="m_name">이름</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<input type="text" name="searchKey" class="form-control">
+					</div>
+					<div class="col-sm-2">
+						<button type="submit" class="btn btn-primary">검색</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="container">
 			<table class="table table-hover w-auto">
 				<thead>
 					<tr>

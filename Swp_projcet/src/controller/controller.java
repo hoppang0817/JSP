@@ -19,6 +19,7 @@ import command.lockerUesr;
 import command.modalList;
 import command.nextid;
 import command.paymentList;
+import command.searchList;
 import command.Command;
 import command.MemberList;
 import command.addClass;
@@ -112,6 +113,12 @@ public class controller extends HttpServlet {
 		//회원리스트 출력
 		else if (com.equals("/MemberList.do")) {
 			command = new MemberList();
+			command.execute(request, response);
+			viewPage = "MemberList.jsp";
+		}
+		
+		else if(com.equals("/searchList.do")) {
+			command = new searchList();
 			command.execute(request, response);
 			viewPage = "MemberList.jsp";
 		}
