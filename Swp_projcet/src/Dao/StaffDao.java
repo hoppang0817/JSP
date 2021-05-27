@@ -63,5 +63,27 @@ public class StaffDao {
 		return -1;// 없는아이디		
 	}
 	
+	public int chackId(String id) {
+		try {
+			StringBuffer sql= new StringBuffer();
+			sql.append("select * from staff where s_id=? ");
+			conn =DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return 0; //이미 존재하는 아이디
+			}else {
+				return 1; //사용 가능한 아이디
+			}
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		return -1;//db오류
+	}
+	
 	
 }

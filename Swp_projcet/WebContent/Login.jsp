@@ -43,7 +43,10 @@
 					<label for="inputUserPassword" class="sr-only">User Password</label> 
 					<input type="password" name="pw" class="form-control" placeholder="PW"  required autofocus>
 				</div>
-				<button type="submit" class="btn btn-primary form-control">로그인</button>
+				
+				<button type="submit" class="btn btn-primary form-control">로그인</button> 
+				<br><br>
+				<a href="joinStaff.jsp" >회원가입</a>
 			</form>
 
 		</div>

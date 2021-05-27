@@ -68,6 +68,7 @@ public class controller extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 
+		//로그인
 		if (com.equals("/LoginAction.do")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
@@ -90,6 +91,7 @@ public class controller extends HttpServlet {
 				viewPage = "Login.jsp";
 			}
 		}
+	
 		else if (com.equals("/nextid.do")) {
 	         command = new nextid();
 	         command.execute(request, response);
