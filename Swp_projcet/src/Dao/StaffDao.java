@@ -48,10 +48,10 @@ public class StaffDao {
 			
 			if(rs.next()) {
 				if(rs.getString("s_pw").equals(pw)) {
-					return 1;		//입력한 비밀번호와 DB에있는 비밀번호가 같다면 1을
+					return 1;		//���ν�� 鍮�諛�踰��몄�� DB������ 鍮�諛�踰��멸� 媛��ㅻ㈃ 1��
 				}
 				else {
-					return 0;		//다르면 0을 리턴해줌
+					return 0;		//�ㅻⅤ硫� 0�� 由ы�댄�댁�
 				}
 			}
 			
@@ -60,7 +60,7 @@ public class StaffDao {
 		}finally {
 			closeAll(rs, pstmt, conn);
 		}
-		return -1;// 없는아이디		
+		return -1;// �������대��		
 	}
 	
 	public int chackId(String id) {
@@ -72,9 +72,9 @@ public class StaffDao {
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				return 0; //이미 존재하는 아이디
+				return 0; //�대�� 議댁�ы���� ���대��
 			}else {
-				return 1; //사용 가능한 아이디
+				return 1; //�ъ�� 媛��ν�� ���대��
 			}
 			
 		}catch(Exception e){
@@ -82,8 +82,27 @@ public class StaffDao {
 		}finally {
 			closeAll(rs, pstmt, conn);
 		}
-		return -1;//db오류
+		return -1;//db�ㅻ�
 	}
 	
+	public void insertStaff(String id,String pw,String name,String phone, String addr) {
+		try {
+			StringBuffer sql= new StringBuffer();
+			sql.append("insert into staff (s_id,s_pw,s_phone,s_arrd,s_name) value(?,?,?,?,?)");
+			conn =DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, phone);
+			pstmt.setString(4, addr);
+			pstmt.setString(5, name);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(null, pstmt, conn);
+		}
+		
+	}
 	
 }

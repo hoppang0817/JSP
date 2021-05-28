@@ -14,6 +14,7 @@ import Dao.StaffDao;
 import command.joinClass;
 import command.joinClassView;
 import command.joinMemberList;
+import command.joinStaff;
 import command.lockerList;
 import command.lockerUesr;
 import command.modalList;
@@ -97,6 +98,11 @@ public class controller extends HttpServlet {
 	         command.execute(request, response);
 	         viewPage = "JoinMember.jsp";
 	      }
+		else if(com.equals("/joinStaff.do")) {
+			command = new joinStaff();
+			command.execute(request, response);
+			viewPage = "Login.jsp";
+		}
 		
 		//가입
 		else if (com.equals("/joinMember.do")) {

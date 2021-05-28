@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,9 +80,20 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0" href="checkMember.jsp"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">출석 체크</span></a>
 							</li>
-							<li class="nav-item"><a class="nav-link pl-0" href="logout.jsp"><i
-									class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">로그아웃</span></a>
-							</li>
+							 <c:choose>
+							 	<c:when test="${empty sessionId}">
+							 		<li class="nav-item"><a class="nav-link pl-0" href="Login.jsp"><i
+									class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">로그인</span></a>
+									</li>
+							 	</c:when>
+							 	<c:otherwise>
+									<li class="nav-item"><a class="nav-link pl-0" href="logout.jsp">
+									<span>${sessinId}</span> <span class="d-none d-md-inline">로그아웃</span></a>
+									</li>
+							 	</c:otherwise>
+							 </c:choose>
+							
+							
 						</ul>
 					</div>
 				</nav>

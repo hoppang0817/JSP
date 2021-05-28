@@ -22,6 +22,7 @@
 		<div class="container" style="margin-top: 70px">
 			<h2>회원 목록</h2>
 		</div>
+		<!-- 검색창 시작 -->
 		<div class="container">
 			<form action="searchList.do">
 				<div class="form-group row">

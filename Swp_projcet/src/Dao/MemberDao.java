@@ -120,17 +120,19 @@ public class MemberDao {
 		try {
 			conn = DBConnection.getConnection();
 			StringBuffer sql = new StringBuffer();
-			
+			//이름으로 검색한경우
 			if(search.equals("m_name") && searchKey != null) {
 				sql.append("select a.*, max(b.startDate) as startDate, max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having m_name like ? order by m_id");
 				pstmt = conn.prepareStatement(sql.toString());
 				pstmt.setString(1, "%"+searchKey+"%");
 			}
+			//id로 검색한경우
 			else if(search.equals("m_id") && searchKey != null) {
 				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having m_id=? order by m_id");
 				pstmt = conn.prepareStatement(sql.toString());
 				pstmt.setInt(1, Integer.valueOf(searchKey));
 			}
+			//검색하지 않았을때
 			else{
 				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id order by m_id");
 				pstmt = conn.prepareStatement(sql.toString());
