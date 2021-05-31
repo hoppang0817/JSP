@@ -24,7 +24,7 @@
 		</div>
 		<!-- 검색창 시작 -->
 		<div class="container">
-			<form action="searchList.do">
+			<form action="searchList.do" class="form-inline justify-content-end" >
 				<div class="form-group row">
 					<div class="col-sm-2">
 						<select name="search" class="form-control">
