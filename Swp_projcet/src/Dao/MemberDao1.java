@@ -8,18 +8,18 @@ import java.util.ArrayList;
 import DBConnection.DBConnection;
 import Dto.MemberDto;
 
-public class MemberDao {
+public class MemberDao1 {
 
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
-	private static MemberDao instance;
-	private MemberDao() {
+	private static MemberDao1 instance;
+	private MemberDao1() {
 		
 	}
-	public static MemberDao getInstance(){
+	public static MemberDao1 getInstance(){
 		if(instance ==null) {
-			instance = new MemberDao();	
+			instance = new MemberDao1();	
 		}
 		return instance;
 	}
@@ -39,10 +39,6 @@ public class MemberDao {
 			e.printStackTrace();
 		}
 	}
-	
-	//페이징해보자
-	
-	
 	
 	   public int nextid() {
 		      int nextid1 =0;

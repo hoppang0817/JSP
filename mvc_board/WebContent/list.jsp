@@ -43,7 +43,7 @@
 			<tr>
 				<td><%= v.get(i).getbId()%></td>
 				<td><%= v.get(i).getbName()%></td>
-				<td><a href="content_view.do?bId=<%= v.get(i).getbId()%>"><%= v.get(i).getbTitle() %></a></td>
+				<td><a href="content_view.do?bId=<%= v.get(i).getbId()%>&page=<%=tempStart%>"><%= v.get(i).getbTitle() %></a></td>
 				<td><%= v.get(i).getbDate() %></td>
 				<td><%= v.get(i).getbHit()%></td>
 			</tr>
@@ -53,7 +53,11 @@
 		<tr>
 			<td clospan="5"><a href="write_view.do">글작성</a></td>
 		</tr>
+		<tr>
+			<td clospan="5"><a href="shck.do">검색</a></td>
+		</tr>
 	</table><br>
+	
 		<%
 		for(int i=1; i<=count; i++){ %>
 			

@@ -78,8 +78,11 @@
 	</main>
 	
 <script type="text/javascript">
+	//jQury class는 .으로 불러옴
+	//.ls-modal 클릭시 함수 실행
 	 $('.ls-modal').on('click', function(e){
-		  e.preventDefault();
+		  e.preventDefault(); //기본 동작 중단
+		  //.modal-body부분  href주소에 연결된 화면 출력
 		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));
 		});
 </script>
