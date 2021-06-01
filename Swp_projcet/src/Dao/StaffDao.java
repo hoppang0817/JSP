@@ -48,10 +48,10 @@ public class StaffDao {
 			
 			if(rs.next()) {
 				if(rs.getString("s_pw").equals(pw)) {
-					return 1;		//���ν�� 鍮�諛�踰��몄�� DB������ 鍮�諛�踰��멸� 媛��ㅻ㈃ 1��
+					return 1;		//로그인 성공
 				}
 				else {
-					return 0;		//�ㅻⅤ硫� 0�� 由ы�댄�댁�
+					return 0;		//로그인실패
 				}
 			}
 			
@@ -60,7 +60,7 @@ public class StaffDao {
 		}finally {
 			closeAll(rs, pstmt, conn);
 		}
-		return -1;// �������대��		
+		return -1;// DB 오류
 	}
 	
 	public int chackId(String id) {

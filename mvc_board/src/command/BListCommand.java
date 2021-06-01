@@ -14,8 +14,8 @@ public class BListCommand implements BCommand{
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		
 		BDao dao = new BDao();
-		ArrayList<bDto>dtos = dao.list();
-		request.setAttribute("list", dtos);
+		ArrayList<bDto>v = dao.list();
+		request.setAttribute("v", v);
 	}
 
 }

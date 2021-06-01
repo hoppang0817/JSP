@@ -17,42 +17,71 @@ public class BDao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	public int selectCnt(String table){
-		int result = 0;
-		ResultSet rs = null;
-		String sql = "select count(*) from "+table;
+	//전체 데이터수
+	public int selectCnt(String keyField, String keyWord){
+		int totalCount = 0;
+		String sql = null;
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
+			if(keyWord != null) {
+				//검색일경우 전체 데이터수
+				sql = "select count(*) from mvc_board where "+ keyField +" like ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+keyWord+"%");
+				System.out.println(sql);
+			}
+			else {
+				//검색이 아닌경우 전체 데이터수
+				sql="select count(*) from mvc_board";
+				pstmt = conn.prepareStatement(sql);
+			}
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				result = rs.getInt(1);
+				totalCount = rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally{
 			try { // 다 썻으니 닫아줘야 한다.
-				rs.close();
-				pstmt.close();
+				if(rs != null){
+					rs.close();
+				}
+				if(pstmt != null){
+					pstmt.close();
+				}
+				if(conn != null){
+					conn.close();
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
-		return result;
+		return totalCount;
 	}
 	
 	
-	public ArrayList<bDto> selectPage(String table, int start, int pageCnt){
-		ResultSet rs=null;
-		
-		String SQL = "SELECT * FROM "+table+" limit ?, ?";
+	public ArrayList<bDto> selectPage(String keyField,String keyWord, int startPage, int pageCnt){
+		String sql =null;
 		ArrayList<bDto> v = new ArrayList<bDto>();
 		
 		try{
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(SQL); // db에 연결하여 SQL 사용 준비
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, pageCnt);
+			if(keyWord !=null) {
+				//검색인 경우
+				sql ="SELECT * FROM mvc_board where "+ keyField +" like ? order by bId desc limit ?,?";
+				pstmt = conn.prepareStatement(sql); // db에 연결하여 SQL 사용 준비
+				pstmt.setString(1, "%"+keyWord+"%");
+				pstmt.setInt(2, startPage);
+				pstmt.setInt(3, pageCnt);
+				System.out.println(sql);
+			}
+			else{
+				//검색이 아닌 경우
+				sql ="SELECT * FROM mvc_board order by bId desc limit ?,?";
+				pstmt = conn.prepareStatement(sql); // db에 연결하여 SQL 사용 준비
+				pstmt.setInt(1, startPage);
+				pstmt.setInt(2, pageCnt);
+			}
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				int bId = rs.getInt("bId");
@@ -82,7 +111,6 @@ public class BDao {
 					conn.close();
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

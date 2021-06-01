@@ -19,6 +19,7 @@ import command.BModifyCommand;
 import command.BReplyCommand;
 import command.BReplyViewCommand;
 import command.BWriteCommand;
+import command.search;
 
 
 @WebServlet("*.do")
@@ -96,6 +97,11 @@ public class BFrontController extends HttpServlet {
 			command = new BReplyCommand();
 			command.execute(request, response);
 			viewPage ="list.do";
+		}
+		else if(com.equals("/search.do")) {
+			command=new search();
+			command.execute(request, response);
+			viewPage ="list.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
