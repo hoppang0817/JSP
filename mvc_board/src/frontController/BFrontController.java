@@ -71,7 +71,7 @@ public class BFrontController extends HttpServlet {
 		else if(com.equals("/list.do")) {
 			command = new BListCommand();
 			command.execute(request, response);
-			viewPage = "list.jsp";
+			viewPage = "search.do";
 		}
 		else if(com.equals("/content_view.do")) {
 			command = new BContentCommand();

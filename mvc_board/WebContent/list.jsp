@@ -21,17 +21,16 @@
 		int count = dao.selectCnt(keyField, keyWord); // 전체데이터 수
 		
 		String tempStart = request.getParameter("page"); // 현재 페이지 
-		
-		int startPage = 0; // limit의 시작값 -> 첫 limit 0,10
 		int onePageCnt=3; // 한페이지에 출력할 데이터 수
+
 		
 		count = (int)Math.ceil((double)count/(double)onePageCnt); // 페이지 수 저장
 		
-		if(tempStart != null){ // 처음에는 실행되지 않는다.
-			startPage = (Integer.parseInt(tempStart)-1)*onePageCnt;
-		}
+	//	if(tempStart != null){ // 처음에는 실행되지 않는다.
+		//	cPage = (Integer.parseInt(tempStart)-1)*onePageCnt;
+		//}
 		
-		ArrayList<bDto> v = dao.selectPage(keyField, keyWord, startPage, onePageCnt);
+		//ArrayList<bDto> v = dao.selectPage(keyField, keyWord, cPage, onePageCnt);
 	%>
 	<table width="500" cellpadding="0" cellspacing="0" border="1">
 		<tr>
@@ -57,12 +56,10 @@
 	</table><br>
 		<form action="search.do">
 		<select name="keyField" class="form-control" id="keyField">
-				<option>-</option>						
 				<option value="bTitle" id="bTitle">제목</option>
 				<option value="bName" id="bName">이름</option>
 				</select>
-		
-		<input type="text" name="keyWord" value="${keyWord}">
+		<input type="text" name="keyWord" value="${keyWord1}">
 		<button type="submit">검색</button> 
 		</form>
 		
@@ -70,7 +67,7 @@
 		<%
 		for(int i=1; i<=count; i++){ %>
 			
-			<a href="list.jsp?page=<%=i %>">[<%=i%>]
+			<a href="search.do?page=<%=i %>&keyField=${keyField}&keyWord=${keyWord1}">[<%=i%>]
 			</a>
 		<% }; %>
 	

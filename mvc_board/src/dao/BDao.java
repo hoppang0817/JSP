@@ -23,7 +23,7 @@ public class BDao {
 		String sql = null;
 		try {
 			conn = DBConnection.getConnection();
-			if(keyWord != null) {
+			if(!keyWord.equals("")) {
 				//검색일경우 전체 데이터수
 				sql = "select count(*) from mvc_board where "+ keyField +" like ?";
 				pstmt = conn.prepareStatement(sql);
@@ -66,7 +66,7 @@ public class BDao {
 		
 		try{
 			conn = DBConnection.getConnection();
-			if(keyWord !=null) {
+			if(!keyWord.equals("")) {
 				//검색인 경우
 				sql ="SELECT * FROM mvc_board where "+ keyField +" like ? order by bId desc limit ?,?";
 				pstmt = conn.prepareStatement(sql); // db에 연결하여 SQL 사용 준비
