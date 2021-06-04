@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import DBConnection.DBConnection;
 import Dto.checkDto;
+import Dto.mCheck;
 
 
 public class checkDao {
@@ -86,6 +87,33 @@ public class checkDao {
 			closeAll(null, pstmt, conn);
 		}
 		return -1;
+		
+	}
+	
+	public ArrayList<mCheck> listPerOne(String id){
+		ArrayList<mCheck>list = new ArrayList<mCheck>();
+		try {
+			conn = DBConnection.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("SELECT @rownum:=@rownum+1  rnum, A.c_day,A.c_time,A.c_num FROM  mcheck A,(SELECT @ROWNUM := 0) R WHERE  m_id=? ORDER BY A.c_day DESC");
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(id));
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				int rnum = rs.getInt("rnum");
+				String c_day = rs.getString("c_day");
+				String c_time = rs.getString("c_time");
+				int c_num = rs.getInt("c_num");
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		
+		return list;
 		
 	}
 }

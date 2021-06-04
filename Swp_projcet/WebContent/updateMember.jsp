@@ -18,7 +18,7 @@
 		<div class="container" style="margin-top: 70px">
 			<h2>회원 수정</h2>
 			<br>
-			<form action="updateMember.do" class="form-horizontal" name="update" method="post">
+			<form action="updateMember.do?page=${page}" class="form-horizontal" name="update" method="post">
 				<input type="hidden" name="Id" value="${MemberView.m_id}">
 				<div class="form-group row">
 					<label class="contral-label col-sm-2">이름</label>

@@ -55,11 +55,18 @@ body, html {
 						<ul
 							class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
 						
+							 <c:choose>
+							 	<c:when test="${empty sessionId}">
+							 		<li class="nav-item"><a class="nav-link pl-0" href="Login.jsp"><i
+									class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">로그인</span></a>
+									</li>
+							 	</c:when>
+							 	<c:otherwise>
 							<li class="nav-item"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="collapse" data-target="#demo">
 								<i class="far fa-heart"></i> <span class="d-none d-md-inline">회원 관리</span></a> <span class="caret"></span>
 								<div class="collapse" id="demo">
 									<a class="text-white" href="nextid.do">회원 등록</a> 
-									<a class="text-white" href="MemberList.do">회원 목록</a>
+									<a class="text-white" href="searchList.do">회원 목록</a>
 								</div>
 							</li>
 							<li class="nav-item"><a class="nav-link pl-0 dropdown-toggle" href="#" data-toggle="collapse" data-target="#demo1">
@@ -80,15 +87,8 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0" href="checkMember.jsp"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">출석 체크</span></a>
 							</li>
-							 <c:choose>
-							 	<c:when test="${empty sessionId}">
-							 		<li class="nav-item"><a class="nav-link pl-0" href="Login.jsp"><i
-									class="fa fa-list fa-fw"></i> <span class="d-none d-md-inline">로그인</span></a>
-									</li>
-							 	</c:when>
-							 	<c:otherwise>
 									<li class="nav-item"><a class="nav-link pl-0" href="logout.jsp">
-									<span>${sessinId}</span> <span class="d-none d-md-inline">로그아웃</span></a>
+									<span>[${sessionId}]</span> <span class="d-none d-md-inline">로그아웃</span></a>
 									</li>
 							 	</c:otherwise>
 							 </c:choose>

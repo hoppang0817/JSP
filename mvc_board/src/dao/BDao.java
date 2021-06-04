@@ -23,7 +23,11 @@ public class BDao {
 		String sql = null;
 		try {
 			conn = DBConnection.getConnection();
-			if(!keyWord.equals("")) {
+			System.out.println(keyWord != "");
+			System.out.println(keyWord !=null);
+			System.out.println(keyField);
+			System.out.println(keyWord);
+			if(keyWord != "" && keyWord != null) {
 				//검색일경우 전체 데이터수
 				sql = "select count(*) from mvc_board where "+ keyField +" like ?";
 				pstmt = conn.prepareStatement(sql);
@@ -34,6 +38,7 @@ public class BDao {
 				//검색이 아닌경우 전체 데이터수
 				sql="select count(*) from mvc_board";
 				pstmt = conn.prepareStatement(sql);
+				System.out.println(sql);
 			}
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -66,7 +71,7 @@ public class BDao {
 		
 		try{
 			conn = DBConnection.getConnection();
-			if(!keyWord.equals("")) {
+			if(keyWord != "" && keyWord != null) {
 				//검색인 경우
 				sql ="SELECT * FROM mvc_board where "+ keyField +" like ? order by bId desc limit ?,?";
 				pstmt = conn.prepareStatement(sql); // db에 연결하여 SQL 사용 준비
@@ -81,6 +86,7 @@ public class BDao {
 				pstmt = conn.prepareStatement(sql); // db에 연결하여 SQL 사용 준비
 				pstmt.setInt(1, startPage);
 				pstmt.setInt(2, pageCnt);
+				System.out.println(sql);
 			}
 			rs = pstmt.executeQuery();
 			while(rs.next()){

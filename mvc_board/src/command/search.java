@@ -15,12 +15,15 @@ public class search implements BCommand {
 		BDao dao = new BDao();
 		String keyField = request.getParameter("keyField");
 		String keyWord = request.getParameter("keyWord");
-	
-		String tempStart = request.getParameter("page"); // 현재 페이지 
-		int cPage = 0; // limit의 시작값 -> 첫 limit 0,10
-		int onePageCnt=3; // 한페이지에 출력할 데이터 수
+		System.out.println(keyWord);
 		
-		if(tempStart != null){ // 처음에는 실행되지 않는다.
+		String tempStart = request.getParameter("page"); // ���� ���댁� 
+
+
+		int cPage = 0; // limit�� ����媛� -> 泥� limit 0,10
+		int onePageCnt=3; // �����댁��� 異��ν�� �곗�댄�� ��
+		
+		if(tempStart != null){ // 泥������� �ㅽ����吏� ������.
 			cPage = (Integer.parseInt(tempStart)-1)*onePageCnt;
 		}
 		
@@ -30,8 +33,6 @@ public class search implements BCommand {
 		request.setAttribute("v", v);
 		request.setAttribute("keyWord1", keyWord);
 		request.setAttribute("keyField", keyField);
-		System.out.println(tempStart);
-		request.setAttribute("page", tempStart);
 	}
 
 }

@@ -11,10 +11,13 @@ public class updateMemberView implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 			String m_id = request.getParameter("m_id");
+			String tempPage = request.getParameter("page");
 			MemberDao dao = MemberDao.getInstance();
 			MemberDto dto = dao.updateView(m_id);
 			
+			
 			request.setAttribute("MemberView", dto);
+			request.setAttribute("page", tempPage);
 	}
 
 }

@@ -12,16 +12,28 @@ public class searchList implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		MemberDao dao = MemberDao.getInstance();
 		String search = request.getParameter("search");
 		String searchKey = request.getParameter("searchKey");
+		System.out.println("command : "+search);
 		
-		System.out.println(search);
-		System.out.println(searchKey);
+		String startPage = request.getParameter("page");
+		System.out.println("command :" +startPage);
+		int cPage =0;
+		int onePageCnt = 10;
 		
-		MemberDao dao = MemberDao.getInstance();
-		ArrayList<MemberDto> mdtos = dao.searchList(search, searchKey);
+		if(startPage != null){ 
+			cPage = (Integer.parseInt(startPage)-1)*onePageCnt;
+		}
+		System.out.println(cPage);
+		
+	
+		
+		ArrayList<MemberDto> mdtos = dao.searchList(search, searchKey, cPage, onePageCnt);
 		
 		request.setAttribute("list", mdtos);
+		request.setAttribute("search", search);
+		request.setAttribute("searchKey", searchKey);
 
 	}
 

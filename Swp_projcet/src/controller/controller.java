@@ -140,7 +140,7 @@ public class controller extends HttpServlet {
 		else if(com.equals("/updateMember.do")) {
 			command = new updateMember();
 			command.execute(request, response);
-			viewPage = "MemberList.do";
+			viewPage = "searchList.do";
 		}
 		//수업 목록
 		else if(com.equals("/ClassList.do")) {

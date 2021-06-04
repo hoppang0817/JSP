@@ -18,21 +18,29 @@
 		<div class="container" style="margin-top: 70px">
 			<h2>출석 체크</h2>
 			<br>
-			<c:if test="${cnt == 1 || cnt == -1 }">
+			<c:choose>
+			<c:when test="${cnt == 1 || cnt == -1 }">
 				<div class="alert alert-danger">
 					이미 출석체크 완료
 				</div>
-			</c:if>
+			</c:when>
+			<c:when test="${cnt == 0}">
+				<div class="alert alert-success">
+					출석체크 완료
+				</div>
+			</c:when>
+			</c:choose>
 			<form method="post" class="form-horizontal" action="checkMember.do">
 			<div class="form-group row">
 				<label class="control-lable col-sm-1"> 회원번호  </label>
 				<div class="col-sm-3">
 					<input type="text" name="m_id" class="form-control" >
 				</div>
-					<button type="submit" class="btn btn-primary">확인</button>
+					<button type="submit" id="btn" class="btn btn-primary">확인</button>
 			</div>
 			</form>
 		</div>
 	</main>
+
 </body>
 </html>

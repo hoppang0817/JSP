@@ -35,32 +35,38 @@
 				</tr>
 			</thead>
 			<tbody>
-			<c:forEach items="${list }" var="list">
-				<tr>
-					<td>${list.m_id}</td>
-				</tr>
-			
-			</c:forEach>
+			<tr>
+				<td>12346</td>
+				<td>12346</td>
+				<td>12346</td>
+				<td>12346</td>
+			</tr>
 			</tbody>
 			</table>
 		</div>
 	</div>
 	<script type="text/javascript">
-	$(function() {
+	$(document).ready(function() {
 		$("#btn_search").click(function() {
-			console.log(params);
+			var name = $("#name").val();
+			console.log(name);
 			$.ajax({
-				url:'/findId.do',
+				url:"findId.do",
+				dataType : "json",
 				console.log(url),
-				type:'GET',
-				date:{name:$("#name").val()},
+				type:"GET",
+				date:{
+					"name": name
+					},
 				success:function(data){
-				    alert("가져온 데이터 입니다 . "+data);
-					
-			})
-			
+				    alert(data);
+				},
+				error :
+					alert("실패");
+				
 		})
-	});
+	})
+});
 	</script>
 </body>
 </html>

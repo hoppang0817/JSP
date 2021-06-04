@@ -72,9 +72,9 @@ public class StaffDao {
 			pstmt.setString(1, id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				return 0; //�대�� 議댁�ы���� ���대��
+				return 0; //사용 중인 아이디
 			}else {
-				return 1; //�ъ�� 媛��ν�� ���대��
+				return 1; //사용가능한 아이디
 			}
 			
 		}catch(Exception e){
@@ -82,7 +82,7 @@ public class StaffDao {
 		}finally {
 			closeAll(rs, pstmt, conn);
 		}
-		return -1;//db�ㅻ�
+		return -1;//db오류
 	}
 	
 	public void insertStaff(String id,String pw,String name,String phone, String addr) {

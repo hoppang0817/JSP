@@ -40,10 +40,6 @@ public class MemberDao {
 		}
 	}
 	
-	//페이징해보자
-	
-	
-	
 	   public int nextid() {
 		      int nextid1 =0;
 		      try {
@@ -119,27 +115,27 @@ public class MemberDao {
 		
 	}
 	
-	public ArrayList<MemberDto> searchList(String search, String searchKey){
+	
+	//페이징 해보자
+	public ArrayList<MemberDto> searchList(String search, String searchKey, int startPage, int pageCnt){
 		ArrayList<MemberDto> mdtos = new ArrayList<MemberDto>();
 		try {
 			conn = DBConnection.getConnection();
 			StringBuffer sql = new StringBuffer();
-			//이름으로 검색한경우
-			if(search.equals("m_name") && searchKey != null) {
-				sql.append("select a.*, max(b.startDate) as startDate, max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having m_name like ? order by m_id");
+			// 검색한경우
+			if(searchKey != "" && searchKey != null) {
+				sql.append("select a.*, max(b.startDate) as startDate, max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having "+ search +" like ? order by m_id LIMIT ?,?");
 				pstmt = conn.prepareStatement(sql.toString());
 				pstmt.setString(1, "%"+searchKey+"%");
-			}
-			//id로 검색한경우
-			else if(search.equals("m_id") && searchKey != null) {
-				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having m_id=? order by m_id");
-				pstmt = conn.prepareStatement(sql.toString());
-				pstmt.setInt(1, Integer.valueOf(searchKey));
+				pstmt.setInt(2, startPage);
+				pstmt.setInt(3, pageCnt);
 			}
 			//검색하지 않았을때
 			else{
-				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id order by m_id");
+				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id order by m_id LIMIT ?,?");
 				pstmt = conn.prepareStatement(sql.toString());
+				pstmt.setInt(1, startPage);
+				pstmt.setInt(2, pageCnt);
 			}
 			
 			rs = pstmt.executeQuery();
@@ -168,6 +164,39 @@ public class MemberDao {
 	
 	}
 	
+	//데이터 총개수 구하기
+	public int selectCnt(String search, String searchKey) {
+		int totalCount =0;
+		String sql =null;
+		try {
+			conn = DBConnection.getConnection();
+			//System.out.println(searchKey == "");
+			if(searchKey != "" && searchKey != null) {
+				sql = "select count(*) from member where "+ search +" like ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+searchKey+"%");
+			}
+			else {
+				sql = "select count(*) from member";
+				pstmt = conn.prepareStatement(sql);
+			}
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				totalCount = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		
+		return totalCount;
+		
+	}
+	
+	
+	//update시 불러올 데이터
 	public MemberDto updateView(String id) {
 		MemberDto dto =null;
 		try {
@@ -229,6 +258,7 @@ public class MemberDao {
 		
 	}
 	
+	//실제 update기능
 	public void update(String id,String name,String phone,String arrd,String sex,String email,String classNum) {
 		try {
 			StringBuffer sql = new StringBuffer();
@@ -298,6 +328,35 @@ public class MemberDao {
 		return list;
 	}
 	
+	
+	//수업신청시 있는 아이디인지 확인
+	public int checkMemberid(String id) {
+		try {
+			StringBuffer sql= new StringBuffer();
+			sql.append("select * from member where m_id=? ");
+			conn =DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return 0; //있는 아이디
+			}else {
+				return 1; //없는 아이디
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(rs, pstmt, conn);
+		}
+		
+		return -1;
+		
+	}
+	
+	
+	
+	//모달에 사용할 회원찾기
 	public ArrayList<MemberDto> findIdlist(String name){
 		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
 		try {

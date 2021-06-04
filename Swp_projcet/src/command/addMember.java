@@ -41,12 +41,12 @@ public class addMember implements Command {
 		
 		
 		
-		//諛�肄��� �대�몄� ����
+		//바코드 생성
 		String str = id;
         try {
              Barcode barcode = BarcodeFactory.createCode128(str);
              System.out.println(barcode);
-             String dirPath = "C:\\upload\\"; // �대�몄� ���� ���깅�� 寃쎈�
+             String dirPath = "C:\\upload\\"; // 바코드 생성 이미지 저장 위치
              String filePath = dirPath+id+".png";
              File cImg = new File(filePath);
              BarcodeImageHandler.savePNG(barcode, cImg);
@@ -65,9 +65,11 @@ public class addMember implements Command {
 //		}
 
 
+        //가입 이메일 전송
 		final String user="";
 		final String password="";
 		
+		//네이버 이메일 설정
 		Properties prop = new Properties();
 		prop.put("mail.smtp.host", "smtp.naver.com");
 		prop.put("mail.smtp.port", 587); 
@@ -85,19 +87,19 @@ public class addMember implements Command {
 			message.setFrom(new InternetAddress(user));
 			//������ �대���
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); 
-			//�대��� ��紐�
+			//이메일 제목
 			message.setSubject("KTKO SMTP TEST1111"); 
 			
 			
 		      MimeBodyPart mbp1 = new MimeBodyPart();
 		      
-		      	//�댁��
-	            mbp1.setText("媛����� 異����⑸���� "+name+" ������ \n ����踰���: "+ id+" ������.");
+		      	//이메일 전송 내용
+	            mbp1.setText("가입을 축하합니다. "+name+"/n 회원님 아이디는: "+ id+" 입니다.");
 	            
 	            
 	            String fileaddress="C:\\upload\\"+id+".png";
 	            MimeBodyPart mbp2 = new MimeBodyPart();
-	            FileDataSource  fds = new FileDataSource(fileaddress); //���� �쎌�댁�ㅺ린
+	            FileDataSource  fds = new FileDataSource(fileaddress); //바코드 이미지 생성경로
 	            mbp2.setDataHandler(new DataHandler(fds));                      //���� 泥⑤�
 	            mbp2.setFileName(fds.getName());
 	            
@@ -105,16 +107,11 @@ public class addMember implements Command {
 	            mp.addBodyPart(mbp1);
 	            mp.addBodyPart(mbp2);
 	            
-	            message.setContent(mp);
+	            message.setContent(mp);//전송
 	            
 	            Transport.send(message);
 	            
-	            
-//			//�댁��
-//			message.setText("媛����� 異����⑸���� "+name+" ������ \n ����踰���: "+ id+" ������. \n"+ image1);
-//			// send the message 
-//			Transport.send(message); 
-	            
+	        //이메일 전송 성공시
 			System.out.println("Success Message Send"); 
 			} catch(MessagingException e) { 
 				e.printStackTrace(); 

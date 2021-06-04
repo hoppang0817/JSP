@@ -18,13 +18,39 @@
 		String keyField = request.getParameter("keyField");
 		String keyWord = request.getParameter("keyWord");
 		
-		int count = dao.selectCnt(keyField, keyWord); // 전체데이터 수
 		
-		String tempStart = request.getParameter("page"); // 현재 페이지 
-		int onePageCnt=3; // 한페이지에 출력할 데이터 수
+		String tempStart = request.getParameter("page"); // 현재 페이지  page
+		if(tempStart == null){
+			tempStart="1";
+		}
+		Integer page1 = Integer.parseInt(tempStart);
+		int count = dao.selectCnt(keyField, keyWord); // 전체데이터 수(전체 게시물의 수) totalcount
+		int onePageCnt=3; // 한페이지에 출력할 데이터 수  contList
+		int pagePerBlock = 3;//블럭당 페이지 개수  countPage
+		
+		int totalPage = count / onePageCnt;
+		
+		if(count % onePageCnt>0){
+			totalPage++;
+		}
+		
+		if(totalPage< page1){
+			page1 = totalPage;
+		}
+		
+		int startPage = ((page1-1)/3)*3+1;
+		System.out.print("시작 페이지 :"+startPage);
+		
+		int endPage = startPage + pagePerBlock-1;
+		System.out.print("마지막페이지 :"+endPage);
+		System.out.print("총페이지 :"+totalPage);
 
-		
-		count = (int)Math.ceil((double)count/(double)onePageCnt); // 페이지 수 저장
+		if (endPage > totalPage) {
+			  endPage = totalPage;
+		}
+
+		count = (int)Math.ceil((double)count/(double)onePageCnt); // 페이지 수 저장(총 블록개수)
+		//nowBlock = (int)Math.ceil(Double.parseDouble(tempStart)/pagePerBlock);
 		
 	//	if(tempStart != null){ // 처음에는 실행되지 않는다.
 		//	cPage = (Integer.parseInt(tempStart)-1)*onePageCnt;
@@ -63,14 +89,27 @@
 		<button type="submit">검색</button> 
 		</form>
 		
-	
+	<%
+	if (startPage > 1) {
+	%>
+	<a href="search.do?page=<%=page1-1%>&keyField=${keyField}&keyWord=${keyWord1}">이전</a>
+	<%
+	};
+	%>
 		<%
-		for(int i=1; i<=count; i++){ %>
+		for(int i=startPage; i<=endPage; i++){ %>
 			
 			<a href="search.do?page=<%=i %>&keyField=${keyField}&keyWord=${keyWord1}">[<%=i%>]
 			</a>
 		<% }; %>
 	
+	<%	
+	if (page1 < totalPage) {
+	 %>
+   <a href="search.do?page=<%=page1+1 %>&keyField=${keyField}&keyWord=${keyWord1}">다음</a>
+	<% 
+	}
+	%>
 	<br>
 <script type="text/javascript">
 var keyField ='${keyField}';

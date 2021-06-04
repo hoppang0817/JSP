@@ -16,18 +16,19 @@
 		<div class="container" style="margin-top: 70px">
 			<h2>수업 신청</h2>
 			<br>
-			<form action="joinClass.do?c_num=${c_num}" method="post" class="form-horizontal">
+			<form action="joinClass.do?c_num=${c_num}" id="frm" method="post" class="form-horizontal">
 				<div class="form-group row">
 					<label class="control-lable col-sm-2"> 회원 번호</label>
 					<div class="col-sm-3">
-					   <input type="text" name="Id"	class="form-control">
+					   <input type="text" name="Id"	id="Id" class="form-control">
+					   <span style="color:red" id="checkMessage"></span>
 					 </div>
 					 <div>
-					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findIdview.do">검색</a>
-					<input class ="btn btn-primary" type="submit" value="신청">
+					<input class ="btn btn-primary" id="joinClassbtn" type="button" onclick="test()" value="신청">
 					</div>
 				</div>
 			</form>
+					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findIdview.do">검색</a>
 			
 				<!-- Modal -->
 			<div class="modal fade" id="modal" >
@@ -87,6 +88,44 @@
 		  e.preventDefault();
 		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));
 		});
+	 
+	 function test() {
+		 var id = $("#Id").val();
+		 if(id ==""){
+			 var Text ='<font>회원번호를 입력하세요.</font>';
+				$("#checkMessage").text(""); //checkMessage 영역 초기화
+				$("#checkMessage").show(); 
+				$("#checkMessage").append(Text);
+				$("#id").focus();
+			 return false;
+		 }
+		
+		 $.ajax({ 
+				type : 'POST', //데이터 전송 방식
+				url : 'checkMemberId.jsp',
+				data : {id : id},
+				datatype : "jsp",
+				//통신이 성공할경우 결과값 (data)에 저장
+				success : function(data){
+					console.log(data);
+					if(data == 1){
+						var Text ='<font>없는회원입니다.</font>';
+						$("#checkMessage").text(""); //checkMessage 영역 초기화
+						$("#checkMessage").show(); 
+						$("#checkMessage").append(Text);
+						$("#id").focus();
+						return false;
+					  }
+					else{
+						$("#frm").submit();
+					 }
+					},
+					  error : function(error){
+						  alert("error : " + error);
+					  }
+				});//ajax end
+	};
+
 </script>
 </body>
 </html>
