@@ -28,7 +28,7 @@
 					</div>
 				</div>
 			</form>
-					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findIdview.do">검색</a>
+					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findIdview.do?c_num=${c_num}">검색</a>
 			
 				<!-- Modal -->
 			<div class="modal fade" id="modal" >

@@ -295,6 +295,7 @@ public class MemberDao {
 		}
 	}
 	
+	//수업에 참석하고있는 회원 리스트
 	public ArrayList<MemberDto> modalList(String num){
 		ArrayList<MemberDto>list = new ArrayList<MemberDto>();
 		try {
@@ -367,20 +368,13 @@ public class MemberDao {
 			pstmt.setString(1, "%"+name+"%");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				int m_id = rs.getInt("m_id");
-				String m_name = rs.getString("m_name");
-				String m_phone = rs.getString("m_phone");
-				String m_arrd = rs.getString("m_arrd");
-				String m_email = rs.getString("m_email");
-				String m_sex = rs.getString("m_sex");
-				
 				MemberDto dto = new MemberDto();
-				dto.setM_id(m_id);
-				dto.setM_name(m_name);
-				dto.setM_phone(m_phone);
-				dto.setM_arrd(m_arrd);
-				dto.setM_email(m_email);
-				dto.setM_sex(m_sex);
+				dto.setM_id(rs.getInt(1));
+				dto.setM_name(rs.getString(2));
+				dto.setM_phone(rs.getString(3));
+				//dto.setM_arrd(m_arrd);
+				dto.setM_email(rs.getString(4));
+				//dto.setM_sex(m_sex);
 				list.add(dto);
 			}
 		} catch (Exception e) {

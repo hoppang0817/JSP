@@ -37,6 +37,7 @@ import command.classList;
 import command.endDayMember;
 import command.extend;
 import command.findId;
+import command.findIdview;
 import command.inputUesr;
 import command.updateClass;
 import command.updateClassView;
@@ -62,7 +63,7 @@ public class controller extends HttpServlet {
 	protected void actionDo(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("actionDo");
-		// ��湲� ���μ�� 源⑥� 諛⑹�
+		//한글 깨짐 방지를 위해 utf-8로 인코딩
 		response.setContentType("text/html; charset=utf-8");
 		request.setCharacterEncoding("UTF-8");
 
@@ -243,12 +244,15 @@ public class controller extends HttpServlet {
 			viewPage ="checkMember.jsp";
 		}
 		else if(com.equals("/findIdview.do")) {
+			command = new findIdview();
+			command.execute(request, response);
 			viewPage = "findId.jsp";
 		}
 		else if(com.equals("/findId.do")) {
+			System.out.println("여기");
 			command = new findId();
 			command.execute(request, response);
-			viewPage = "findIdview.do";
+			viewPage = "findId.jsp";
 		}
 		else if(com.equals("/changeUesrNum.do")) {
 			command = new changeUesrNum();

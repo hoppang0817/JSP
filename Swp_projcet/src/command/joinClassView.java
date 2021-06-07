@@ -14,6 +14,7 @@ public class joinClassView implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String num = request.getParameter("c_num");
+		System.out.println("받은 수업번호 :"+num);
 		ClassDao dao = ClassDao.getInstance();
 		ArrayList<MemberDto> dto = dao.joinClassView(num);
 		 

@@ -167,7 +167,6 @@ public class ClassDao {
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
 		}finally {
 			closeAll(rs, pstmt, conn);
 		}
