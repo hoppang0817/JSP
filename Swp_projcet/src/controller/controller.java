@@ -18,6 +18,7 @@ import command.joinMemberList;
 import command.joinStaff;
 import command.lockerList;
 import command.lockerUesr;
+import command.mCheckList;
 import command.modalList;
 import command.nextid;
 import command.paymentList;
@@ -263,6 +264,11 @@ public class controller extends HttpServlet {
 			command = new refundLocker();
 			command.execute(request, response);
 			viewPage = "locker.do";
+		}
+		else if(com.equals("/mCheckList.do")) {
+			command = new mCheckList();
+			command.execute(request, response);
+			viewPage = "mCheckList.jsp";
 		}
 		
 

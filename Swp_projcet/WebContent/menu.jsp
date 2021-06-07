@@ -87,6 +87,9 @@ body, html {
 							<li class="nav-item"><a class="nav-link pl-0" href="checkMember.jsp"><i
 									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">출석 체크</span></a>
 							</li>
+							<li class="nav-item"><a class="nav-link pl-0" href="mCheckList.jsp"><i
+									class="fa fa-heart fa-fw"></i> <span class="d-none d-md-inline">출석 관리</span></a>
+							</li>
 									<li class="nav-item"><a class="nav-link pl-0" href="logout.jsp">
 									<span>[${sessionId}]</span> <span class="d-none d-md-inline">로그아웃</span></a>
 									</li>
