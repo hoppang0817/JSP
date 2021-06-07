@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="today" />  
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,11 +30,14 @@
 						<th>종료일</th>
 						<th>등록</th>
 						<th>기간 연장</th>
+						<th>회원변경</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
-						<tr>
+						<tr <c:if test="${list.l_end < today}">
+							class="table-danger" 
+							</c:if>>
 							<td>${list.l_num}</td>
 							<td>${list.m_id}</td>
 							<td>${list.l_end}</td>
@@ -42,11 +48,18 @@
 										class="ls-modal btn btn-outline-primary" data-toggle="modal"
 										href="LockerUesr.do?l_num=${list.l_num}" data-target="#modal"
 									</c:when>
-									<c:otherwise>class="btn btn-outline-primary"  disabled="disabled"</c:otherwise>
+									<c:otherwise>class="btn btn-danger"  disabled="disabled"</c:otherwise>
 								</c:choose>>
 							등록</a>
 							</td>
-							<td><a class="btn btn-primary" href="extend.do?l_num=${list.l_num}">연장</a>
+							<td>
+							<a id="extend" class="btn btn-primary" href="extend.do?l_num=${list.l_num}"
+								<c:if test="${list.m_id eq 0}">
+									onclick="checkId()"
+								</c:if>
+							>연장</a>
+						</td>
+							<td><a class ="ls-modal2 btn btn-primary" data-toggle="modal" data-target="#modal" href="changeUesrNum.do?l_num=${list.l_num}&l_end=${list.l_end}">변경</a> </td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -78,6 +91,16 @@
 		  e.preventDefault();
 		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));
 		});
+	 
+	 $('.ls-modal2').on('click', function(e){
+		  e.preventDefault();
+		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));
+		});
+	 
+	 function checkId() {
+		 alert("사용중인 보관함이 아닙니다");
+	}
+	
 </script>
 </body>
 </html>

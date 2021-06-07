@@ -97,4 +97,37 @@ public class LockerDao {
 		}
 	}
 	
+	public void changeUesr(String num ,String id) {
+		try {
+		conn = DBConnection.getConnection();
+		StringBuffer sql = new StringBuffer();
+		sql.append("update locker set l_start=now(),l_end=(select date_add(now(),interval+1 month)),m_id=? where l_num=?");
+		pstmt = conn.prepareStatement(sql.toString());
+		pstmt.setInt(1, Integer.valueOf(id));
+		pstmt.setInt(2, Integer.valueOf(num));
+		pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(conn, pstmt, null);
+		}
+	}
+	
+	public void refundLocker(String num) {
+		try {
+			conn = DBConnection.getConnection();
+			StringBuffer sql = new StringBuffer();
+			sql.append("update locker set l_start=null,l_end=null,m_id=null where l_num=?");
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeAll(conn, pstmt, null);
+		}
+	}
+	
+	
+	
 }

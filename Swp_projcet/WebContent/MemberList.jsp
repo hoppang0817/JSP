@@ -106,7 +106,10 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="mdto">
-						<tr <c:if test="${mdto.endDate < today}">class="table-danger" onClick="location.href='endDayMember.do?m_id=${mdto.m_id}'"</c:if>>
+						<tr <c:if test="${mdto.endDate < today}">
+							class="table-danger" 
+							onClick="location.href='endDayMember.do?m_id=${mdto.m_id}'"
+						</c:if>>
 							<td>${mdto.m_id}</td>
 							<td>${mdto.m_name}</td>
 							<td>${mdto.m_phone}</td>
@@ -154,6 +157,7 @@
 		}else{
 			$("#m_id").attr("selected",true);
 		}
+		
 	</script>
 </body>
 </html>

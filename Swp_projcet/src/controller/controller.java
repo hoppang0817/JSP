@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Dao.StaffDao;
+import command.changeUesr;
 import command.joinClass;
 import command.joinClassView;
 import command.joinMemberList;
@@ -20,6 +21,7 @@ import command.lockerUesr;
 import command.modalList;
 import command.nextid;
 import command.paymentList;
+import command.refundLocker;
 import command.searchList;
 import command.Command;
 import command.MemberList;
@@ -28,6 +30,7 @@ import command.addMember;
 import command.addpayment;
 import command.changeClass;
 import command.changeClassView;
+import command.changeUesrNum;
 import command.checkMember;
 import command.classList;
 import command.endDayMember;
@@ -245,6 +248,21 @@ public class controller extends HttpServlet {
 			command = new findId();
 			command.execute(request, response);
 			viewPage = "findIdview.do";
+		}
+		else if(com.equals("/changeUesrNum.do")) {
+			command = new changeUesrNum();
+			command.execute(request, response);
+			viewPage = "lockerlayer2.jsp";
+		}
+		else if(com.equals("/changeUesr.do")) {
+			command = new changeUesr();
+			command.execute(request, response);
+			viewPage = "locker.do";
+		}
+		else if(com.equals("/refundLocker.do")) {
+			command = new refundLocker();
+			command.execute(request, response);
+			viewPage = "locker.do";
 		}
 		
 
