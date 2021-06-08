@@ -57,13 +57,15 @@ public class LockerDao {
 			closeAll(conn, pstmt, null);
 		}
 	}
-	public ArrayList<LockerDto> list(){
+	public ArrayList<LockerDto> list(int startPage, int pageCnt){
 		ArrayList<LockerDto>list = new ArrayList<LockerDto>();
 		try {
 			conn = DBConnection.getConnection();
 			StringBuffer sql = new StringBuffer();
-			sql.append("select * from locker");
+			sql.append("select * from locker LIMIT ?,?");
 			pstmt= conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, startPage);
+			pstmt.setInt(2, pageCnt);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int l_num = rs.getInt("l_num");
@@ -81,6 +83,38 @@ public class LockerDao {
 		return list;
 		
 	}
+	
+	//데이터 총개수 구하기
+			public int selectCnt(String search, String searchKey) {
+				int totalCount =0;
+				String sql =null;
+				try {
+					conn = DBConnection.getConnection();
+					//System.out.println(searchKey == "");
+					if(searchKey != "" && searchKey != null) {
+						sql = "select count(*) from locker where "+ search +" like ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%"+searchKey+"%");
+					}
+					else {
+						sql = "select count(*) from locker";
+						pstmt = conn.prepareStatement(sql);
+					}
+					rs = pstmt.executeQuery();
+					if(rs.next()) {
+						totalCount = rs.getInt(1);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}finally {
+					closeAll(conn, pstmt, rs);
+				}
+				
+				
+				return totalCount;
+				
+			}
+		
 	
 	public void extend(String num) {
 		try {

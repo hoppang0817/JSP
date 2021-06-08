@@ -13,8 +13,16 @@ public class classList implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		ClassDao dao = ClassDao.getInstance();
-		ArrayList<ClassDto>list = dao.classList();
+		String startPage = request.getParameter("page");
+		int cPage =0;
+		int onePageCnt = 10;
+		
+		if(startPage != null){ 
+			cPage = (Integer.parseInt(startPage)-1)*onePageCnt;
+		}
+		ArrayList<ClassDto>list = dao.classList(cPage, onePageCnt);
 		request.setAttribute("list", list);
+
 
 	}
 

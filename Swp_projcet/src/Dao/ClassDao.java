@@ -60,14 +60,18 @@ public class ClassDao {
 		}
 	}
 	
-	public ArrayList<ClassDto> classList() {
+	public ArrayList<ClassDto> classList(int startPage, int pageCnt) {
 		ArrayList<ClassDto> list = new ArrayList<ClassDto>();
 		try {
-			StringBuffer sql = new StringBuffer();
-			sql.append("select a.c_num,c_name,c_limitedNum,c_grade,date_format(c_time,\"%H:%i\") as c_time,ifnull(count,0) as count  from class as a  "
-					+ "Left outer join(select c_num,count(c_num) as count from member group by c_num)as b on(a.c_num =b.c_num);");
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql.toString());
+			StringBuffer sql = new StringBuffer();
+		
+				sql.append("select a.c_num,c_name,c_limitedNum,c_grade,date_format(c_time,\"%H:%i\") as c_time,ifnull(count,0) as count  from class as a  "
+						+ "Left outer join(select c_num,count(c_num) as count from member group by c_num)as b on(a.c_num =b.c_num) LIMIT ?,?");
+				pstmt = conn.prepareStatement(sql.toString());
+				pstmt.setInt(1, startPage);
+				pstmt.setInt(2, pageCnt);
+				
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int c_num = rs.getInt("c_num");
@@ -87,6 +91,37 @@ public class ClassDao {
 		return list;
 		
 	}
+	
+	//데이터 총개수 구하기
+		public int selectCnt(String search, String searchKey) {
+			int totalCount =0;
+			String sql =null;
+			try {
+				conn = DBConnection.getConnection();
+				//System.out.println(searchKey == "");
+				if(searchKey != "" && searchKey != null) {
+					sql = "select count(*) from class where "+ search +" like ?";
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, "%"+searchKey+"%");
+				}
+				else {
+					sql = "select count(*) from class";
+					pstmt = conn.prepareStatement(sql);
+				}
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					totalCount = rs.getInt(1);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeAll(rs, pstmt, conn);
+			}
+			
+			
+			return totalCount;
+			
+		}
 	
 	
 	public void updateClass(String num,String name, String count,String time,String grade) {
@@ -206,5 +241,48 @@ public class ClassDao {
 			closeAll(null, pstmt, conn);
 		}
 		
+	}
+	
+	//수업별 제한 인원 구하기
+	public int checkNumLimited(String num) {
+		int limitCount =0;
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("select c_limitedNum from class where c_num=?");
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int count = rs.getInt("c_limitedNum");
+				ClassDto dto = new ClassDto();
+				dto.setC_limitedNum(count);
+				limitCount = count;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return limitCount;
+	}
+	
+	public int totalcount(String num) {
+		int Count =0;
+		try {
+			StringBuffer sql = new StringBuffer();
+			sql.append("select ifnull(count,0) as count  from class as a  Left outer join(select c_num,count(c_num) as count from member group by c_num)as b on(a.c_num =b.c_num) where a.c_num=?");
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			pstmt.setInt(1, Integer.valueOf(num));
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				int count = rs.getInt("count");
+				ClassDto dto = new ClassDto();
+				dto.setCount(count);
+				Count = count;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return Count;
 	}
 }

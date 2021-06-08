@@ -107,7 +107,6 @@
 				datatype : "jsp",
 				//통신이 성공할경우 결과값 (data)에 저장
 				success : function(data){
-					console.log(data);
 					if(data == 1){
 						var Text ='<font>없는회원입니다.</font>';
 						$("#checkMessage").text(""); //checkMessage 영역 초기화
@@ -116,6 +115,14 @@
 						$("#id").focus();
 						return false;
 					  }
+					else if(data == 0){
+						var Text ='<font>이미 수강중인 회원입니다.</font>';
+						$("#checkMessage").text(""); //checkMessage 영역 초기화
+						$("#checkMessage").show(); 
+						$("#checkMessage").append(Text);
+						$("#id").focus();
+						return false;
+					}
 					else{
 						$("#frm").submit();
 					 }

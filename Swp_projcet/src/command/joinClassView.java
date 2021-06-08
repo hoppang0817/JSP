@@ -14,7 +14,7 @@ public class joinClassView implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String num = request.getParameter("c_num");
-		System.out.println("ë°›ì€ ìˆ˜ì—…ë²ˆí˜¸ :"+num);
+		System.out.println("¿Ö¿©±â·Î¿À´Â°É±î :"+num);
 		ClassDao dao = ClassDao.getInstance();
 		ArrayList<MemberDto> dto = dao.joinClassView(num);
 		 

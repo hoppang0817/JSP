@@ -8,7 +8,7 @@ public class findIdview implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		String c_num = request.getParameter("c_num");
-		System.out.println("ë„˜ê¸¸ ìˆ˜ì—… ë²ˆí˜¸"+c_num);
+		System.out.println("º¸³¾ ¼ö¾÷¹øÈ£"+c_num);
 		request.setAttribute("c_num", Integer.valueOf(c_num));
 	}
 

@@ -20,17 +20,19 @@
 		<div class="container">
 		<form method="post" class="form-horizontal" action="changeClass.do">
 			<div class="form-group row">
-				<label class="control-lable col-sm-1"> 회원번호  </label>
+				<label class="control-lable col-sm-2"> 회원번호  </label>
 				<div class="col-sm-3">
-					<input type="text" class="form-control" name="m_id">
+					<input type="text" class="form-control" onkeyup ="test()" id="m_id" name="m_id">
+					<span style="color:red" id="checkMessage"></span>
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="control-lable col-sm-1"> 변경할 수업번호  </label>
-				<div class="col-sm-3">
-					<input type="text" class="form-control" name="c_num">
+				<label class="control-lable col-sm-2"> 변경할 수업번호  </label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" onkeyup="test()" id="c_num" name="c_num">
+					<span style="color:red" id="checkMessage1"></span>
 				</div>
-				<button type="submit" class="btn btn-primary">변경</button>
+				<button class="btn btn-primary">변경</button>
 			</div>
 		</form>
 	</div>
@@ -62,5 +64,31 @@
 			</table>
 		</div>
 	</main>
+	<script type="text/javascript">
+		function test() {
+			var num = $('#c_num').val();
+			var id = $('#m_id').val();
+			if(id == ""){
+				var Text='<font>회원번호를 입력하세요.</font>';
+				$("#checkMessage").text(""); //checkMessage 영역 초기화
+				$("#checkMessage").show(); 
+				$("#checkMessage").append(Text);
+				$("#id").focus();
+			 return false;
+			}else if(num == ""){
+				var Text='<font>변경할 수업번호를 입력하세요.</font>';
+				$("#checkMessage1").text(""); //checkMessage 영역 초기화
+				$("#checkMessage1").show(); 
+				$("#checkMessage1").append(Text);
+				$("#id").focus();
+			 return false;
+			}else{
+				$("#checkMessage").text("");
+				$("#checkMessage1").text(""); 
+			}
+
+		}
+	
+	</script>
 </body>
 </html>

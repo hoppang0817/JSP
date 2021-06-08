@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Dao.MemberDao;
 import Dao.StaffDao;
+import Dto.MemberDto;
 import command.changeUesr;
 import command.joinClass;
 import command.joinClassView;
@@ -248,12 +251,6 @@ public class controller extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "findId.jsp";
 		}
-		else if(com.equals("/findId.do")) {
-			System.out.println("여기");
-			command = new findId();
-			command.execute(request, response);
-			viewPage = "findId.jsp";
-		}
 		else if(com.equals("/changeUesrNum.do")) {
 			command = new changeUesrNum();
 			command.execute(request, response);
@@ -275,8 +272,14 @@ public class controller extends HttpServlet {
 			viewPage = "mCheckList.jsp";
 		}
 		
+		else if(com.equals("/findId.do")) {
+			command = new findId();
+			command.execute(request, response);
+			viewPage = "findId.jsp";
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
+	
 }

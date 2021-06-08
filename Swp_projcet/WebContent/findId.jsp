@@ -7,7 +7,6 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 	<script type="text/javascript">
@@ -21,8 +20,9 @@
 			var table = document.getElementById("ajaxTable");
 			table.innerHTML="";
 			if(request.readyState == 4 && request.status == 200){
-				consol
-				var object = eval('('+request.responseText +')')
+				alert("여기");
+				var object = eval("("+request.responseText +")")
+				console.log("안들어오나");
 				var result = object.result;
 				for(var i=0; i<result.length;i++){
 					var row = table.insertRow(0);
@@ -46,7 +46,7 @@
 					<input id="name" onkeyup="searchFunction()" type="text" name="name" class="form-control">
 				</div>
 				<div>
-				<button onclick="searchFunction();" class="btn btn-primary">검색</button>
+				<button onclick="searchFunction()" class="btn btn-primary">검색</button>
 				</div>
 			</div>
 		</form>
@@ -67,3 +67,7 @@
 	</div>
 </body>
 </html>
+
+
+
+

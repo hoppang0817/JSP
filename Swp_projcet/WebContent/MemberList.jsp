@@ -41,17 +41,15 @@
 		nowPage = totalPage;
 	}
 	
-	int startPage = ((nowPage-1)/10)*10+1;
-	System.out.print("시작 페이지 :"+startPage);
+	 int from = (nowPage * onePageCnt) - (onePageCnt-1); //(1*10)-(10-1)=10-9=1 //from
+	 int to=(nowPage * onePageCnt); //(1*10) = 10 //to
 	
-	int endPage = startPage + pagePerBlock-1;
-	System.out.print("마지막페이지 :"+endPage);
-	System.out.println("총페이지 :"+totalPage);
-
-	if (endPage > totalPage) {
-		  endPage = totalPage;
-	}
 	
+	int fromPage = ((nowPage-1)/pagePerBlock*pagePerBlock)+1;  //보여줄 페이지의 시작
+    int toPage = ((nowPage-1)/pagePerBlock*pagePerBlock)+pagePerBlock; //보여줄 페이지의 끝
+    if(toPage> totalPage){ // 예) 20>17
+        toPage = totalPage;
+    }
 	totalCount = (int)Math.ceil((double)totalCount/(double)onePageCnt); 
 
 %>
@@ -125,28 +123,55 @@
 				</tbody>
 			</table>
 			<!-- 페이징 처리 -->
+			<div class="text-center">
+				
 			<%
-				if (startPage > 1) {
+			   if(nowPage>pagePerBlock){ //처음, 이전 링크
 			%>
-					<a href="searchList.do?page=<%=nowPage-1 %>&search=${search}&searchKey=${searchKey}">이전</a>
+					
+					[<a href="searchList.do?page=1">◀◀</a>]
+					[<a href="searchList.do?page=<%=nowPage-1 %>">◀</a>]
 			<%
-				};
+				}else{
 			%>
+					  [<span style="color:gray">◀◀</span>]   
+               		  [<span style="color:gray">◀</span>]
+            <%
+				}
+            %>
+			
 			<%
-				for(int i=startPage; i<=endPage; i++){ 
+				for(int i=fromPage; i<= toPage; i++){ 
+					 if(i==nowPage){
 			
 			%>
-					<a href="searchList.do?page=<%=i %>&search=${search}&searchKey=${searchKey}">[<%=i%>]</a>
+				 [<%=i%>]
 			<% 
-			}; 
+					 }else{
+						 
 			%>
-			<%	
-				if (nowPage < totalPage) {
-			 %>
-					<a href="searchList.do?page=<%=nowPage+1 %>&search=${search}&searchKey=${searchKey}">다음</a>
-			<% 
+					<a href="searchList.do?page=<%=i %>">[<%=i%>]</a>
+				
+			<%		
+					 }
 				}
 			%>
+			
+			<%	
+				 if(toPage<totalPage){ //다음, 이후 링크
+			 %>
+					[<a href="searchList.do?page=<%=nowPage+1 %>">▶</a>]
+					[<a href="searchList.do?page=<%=totalPage %>">▶▶</a>]
+			<%
+				}else{
+			%>
+				[<span style="color:gray">▶</span>]
+                [<span style="color:gray">▶▶</span>]
+			<%
+				}
+			%>
+	
+			</div>
 		</div>
 	</main>
 	<script type="text/javascript">

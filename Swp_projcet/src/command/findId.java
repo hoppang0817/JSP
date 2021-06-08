@@ -13,11 +13,11 @@ public class findId implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("ë“¤ì–´ì™”ìŒ");
+		System.out.println("¿©±â µé¾î¿ÀÁö");
 		String name = request.getParameter("m_name");
-		System.out.println("ê²€ìƒ‰í•  ì´ë¦„:"+name);
+		System.out.println("¹ŞÀº ÀÌ¸§°ª:"+name);
 		String num = request.getParameter("c_num");
-		System.out.println("ë“¤ì–´ì™”ìŒ ìˆ˜ì—…ë²ˆí˜¸ :"+num);
+		System.out.println("¹ŞÀº ¼ö¾÷¹øÈ£ :"+num);
 		try {
 			response.getWriter().write(getJSON(name));
 		} catch (IOException e) {
@@ -26,8 +26,9 @@ public class findId implements Command {
 
 	}
 	
-	//ê²°ê³¼ë¥¼ jsoní˜•íƒœë¡œ íŒŒì‹±í•´ì¤Œ
+	//µ¥ÀÌÅÍ¸¦ JsonÇü½ÄÀ¸·Î ÆÄ½Ì
 	public String getJSON(String name) {
+		System.out.println("ÀÌ¸§À» ¹Ş´Â°Å´Ï?"+name);
 		if(name == null) name="";
 		StringBuffer result = new StringBuffer("");
 		result.append("{\"result\":[");
@@ -40,6 +41,7 @@ public class findId implements Command {
 			result.append("{\"value\":\""+ list.get(i).getM_email()+"\"}],");
 		}
 		result.append("]}");
+		System.out.println(result);
 		return result.toString();
 	}
 

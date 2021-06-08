@@ -12,7 +12,13 @@ public class lockerList implements Command {
 
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 		LockerDao dao = LockerDao.getInstance();
-		ArrayList<LockerDto> list = dao.list();
+		String startPage = request.getParameter("page");
+		int cPage =0;
+		int onePageCnt = 10;
+		if(startPage != null){ 
+			cPage = (Integer.parseInt(startPage)-1)*onePageCnt;
+		}
+		ArrayList<LockerDto> list = dao.list(cPage, onePageCnt);
 		request.setAttribute("list", list);
 	}
 }
