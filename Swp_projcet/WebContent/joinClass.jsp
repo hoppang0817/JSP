@@ -115,14 +115,6 @@
 						$("#id").focus();
 						return false;
 					  }
-					else if(data == 0){
-						var Text ='<font>이미 수강중인 회원입니다.</font>';
-						$("#checkMessage").text(""); //checkMessage 영역 초기화
-						$("#checkMessage").show(); 
-						$("#checkMessage").append(Text);
-						$("#id").focus();
-						return false;
-					}
 					else{
 						$("#frm").submit();
 					 }

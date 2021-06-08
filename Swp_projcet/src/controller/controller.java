@@ -201,6 +201,7 @@ public class controller extends HttpServlet {
 			viewPage = "changeClass.jsp";
 		}
 		else if(com.equals("/changeClass.do")) {
+			System.out.println("여기들오왔냐");
 			command = new changeClass();
 			command.execute(request, response);
 			viewPage = "changeClassView.do";

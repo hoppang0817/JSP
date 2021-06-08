@@ -92,7 +92,7 @@ public class ClassDao {
 		
 	}
 	
-	//µ¥ÀÌÅÍ ÃÑ°³¼ö ±¸ÇÏ±â
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 		public int selectCnt(String search, String searchKey) {
 			int totalCount =0;
 			String sql =null;
@@ -243,7 +243,7 @@ public class ClassDao {
 		
 	}
 	
-	//¼ö¾÷º° Á¦ÇÑ ÀÎ¿ø ±¸ÇÏ±â
+	
 	public int checkNumLimited(String num) {
 		int limitCount =0;
 		try {
