@@ -20,7 +20,8 @@
 			var table = document.getElementById("ajaxTable");
 			table.innerHTML="";
 			if(request.readyState == 4 && request.status == 200){
-				alert("여기");
+				console.log("여기");
+				console.log(request.responseText);
 				var object = eval("("+request.responseText +")")
 				console.log("안들어오나");
 				var result = object.result;
@@ -46,7 +47,7 @@
 					<input id="name" onkeyup="searchFunction()" type="text" name="name" class="form-control">
 				</div>
 				<div>
-				<button onclick="searchFunction()" class="btn btn-primary">검색</button>
+				<button onclick="searchFunction()" class="btn btn-primary" type="button">검색</button>
 				</div>
 			</div>
 		</form>

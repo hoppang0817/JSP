@@ -33,7 +33,7 @@
 							id="c_num" name="c_num"> <span style="color: red"
 							id="checkMessage1"></span>
 					</div>
-					<button class="btn btn-primary" onclick="test1()">변경</button>
+					<button class="btn btn-primary" type="button" onclick="test1()">변경</button>
 				</div>
 			</form>
 		</div>
@@ -103,14 +103,12 @@
 					var items = data.split(',');
 					var item = items[0].replace(/(\r\n\r\n\r\n)/g,"");
 					console.log(items);
-					if (item == items[1]) {
+					if (item == items[1] || item < items[1]) {
 						console.log("마져");
-						alert("마져")
 						alert("변경불과(인원초과)");
 						return false;
 					} else {
-						alert("여기도??")
-						location.href = "changeClass.do";
+						$("#c_form").submit();
 					}
 				}
 			})

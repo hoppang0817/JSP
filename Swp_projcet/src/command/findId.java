@@ -41,7 +41,7 @@ public class findId implements Command {
 			result.append("{\"value\":\""+ list.get(i).getM_email()+"\"}],");
 		}
 		result.append("]}");
-		System.out.println(result);
+		System.out.println(result.toString());
 		return result.toString();
 	}
 
