@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <title>Insert title here</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
 		<div class="container" style="margin-top: 70px">
 			<h2>수업 수정</h2>
 			<br>
-			<form action="updateClass.do" name="updateClass" class="form-horizontal"
+			<form action="updateClass.do?page=${page}" name="updateClass" class="form-horizontal"
 				method="post">
 				<input type="hidden" name="num" value="${classView.c_num}">
 				<div class="form-group row">
@@ -52,7 +53,7 @@
 						</script>
 					</div>
 				</div>
-				<input class="btn btn-primary" type="submit" value="등록"> <a href="ClassList.do" class="btn btn-warning">취소</a>
+				<input class="btn btn-primary" type="submit" value="등록"> <a href="ClassList.do?page=${page}" class="btn btn-warning">취소</a>
 			</form>
 		</div>
 	</main>

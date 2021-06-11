@@ -58,8 +58,9 @@
 <html>
 <head>
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 목록</title>
 </head>
 <body>
 	<jsp:include page="menu.jsp" />
@@ -106,7 +107,7 @@
 					<c:forEach items="${list}" var="mdto">
 						<tr <c:if test="${mdto.endDate < today}">
 							class="table-danger" 
-							onClick="location.href='endDayMember.do?m_id=${mdto.m_id}'"
+							onclick="location.href='endDayMember.do?m_id=${mdto.m_id}'"
 						</c:if>>
 							<td>${mdto.m_id}</td>
 							<td>${mdto.m_name}</td>

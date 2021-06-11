@@ -17,14 +17,10 @@
 	}
 	//현재 페이지
 	Integer nowPage = Integer.parseInt(tempPage);
-	System.out.println(nowPage);
-	
-	
+
 	//총데이터수
 	int totalCount = dao.selectCnt(search, searchKey);
-	System.out.println(totalCount);
-	
-	
+
 	int onePageCnt=10; // 한페이지에 출력할 데이터 수 
 	int pagePerBlock = 5;//블럭당 페이지 개수  
 	int totalPage = totalCount / onePageCnt; //총 페이지수
@@ -60,6 +56,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <title>Insert title here</title>
 
 </head>
@@ -84,9 +81,11 @@
 				</thead>
 				<tbody>
 					<c:forEach items="${list}" var="list">
-						<tr <c:if test="${list.l_end < today}">
+						<tr 
+						<c:if test="${list.l_end < today}">
 							class="table-danger" 
-							</c:if>>
+						</c:if>
+							>
 							<td>${list.l_num}</td>
 							<td>${list.m_id}</td>
 							<td>${list.l_end}</td>
@@ -94,12 +93,17 @@
 							<a
 								<c:choose> 
 									<c:when test="${list.m_id eq 0}">
-										class="ls-modal btn btn-outline-primary" data-toggle="modal"
-										href="LockerUesr.do?l_num=${list.l_num}" data-target="#modal"
+										class="ls-modal btn btn-outline-primary" 
+										data-toggle="modal"
+										data-target="#modal"
+										href="LockerUesr.do?l_num=${list.l_num}&page=<%=tempPage %>" 
 									</c:when>
-									<c:otherwise>class="btn btn-danger"  disabled="disabled"</c:otherwise>
+									<c:otherwise>
+										class="btn btn-danger"  disabled="disabled"
+									</c:otherwise>
 								</c:choose>>
-							등록</a>
+							등록
+							</a>
 							</td>
 							<td>
 							<a id="extend" class="btn btn-primary" href="extend.do?l_num=${list.l_num}"
@@ -108,7 +112,7 @@
 								</c:if>
 							>연장</a>
 						</td>
-							<td><a class ="ls-modal2 btn btn-primary" data-toggle="modal" data-target="#modal" href="changeUesrNum.do?l_num=${list.l_num}&l_end=${list.l_end}">변경</a> </td>
+							<td><a class ="ls-modal2 btn btn-primary" data-toggle="modal" data-target="#modal" href="changeUesrNum.do?l_num=${list.l_num}&l_end=${list.l_end}&page=<%=tempPage %>">변경</a> </td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -170,6 +174,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<!-- 닫기(x) 버튼 -->
+							<h4 class="modal-title" id="myModalLabel">보관함 사용등록</h4>
 							<button type="button" class="close" data-dismiss="modal">×</button>
 						</div>
 						

@@ -81,8 +81,7 @@ public class MemberDao {
 		}
 		
 	}
-	
-	public ArrayList<MemberDto> MemberList() {
+	   public ArrayList<MemberDto> MemberList() {
 		ArrayList<MemberDto> mdtos = new ArrayList<MemberDto>();
 		try {
 			StringBuffer sql = new StringBuffer();
@@ -115,7 +114,7 @@ public class MemberDao {
 		
 	}
 	
-	
+
 	//페이징 해보자
 	public ArrayList<MemberDto> searchList(String search, String searchKey, int startPage, int pageCnt){
 		ArrayList<MemberDto> mdtos = new ArrayList<MemberDto>();
@@ -124,7 +123,9 @@ public class MemberDao {
 			StringBuffer sql = new StringBuffer();
 			// 검색한경우
 			if(searchKey != "" && searchKey != null) {
-				sql.append("select a.*, max(b.startDate) as startDate, max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id  having "+ search +" like ? order by m_id LIMIT ?,?");
+				sql.append("select a.*, max(b.startDate) as startDate, max(b.endDate) as endDate from member a "
+						+ "right join payment b on b.m_id = a.m_id group by m_id "
+						+ " having "+ search +" like ? order by m_id LIMIT ?,?");
 				pstmt = conn.prepareStatement(sql.toString());
 				pstmt.setString(1, "%"+searchKey+"%");
 				pstmt.setInt(2, startPage);
@@ -132,7 +133,8 @@ public class MemberDao {
 			}
 			//검색하지 않았을때
 			else{
-				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a right join payment b on b.m_id = a.m_id group by m_id order by m_id LIMIT ?,?");
+				sql.append("select a.*, max(b.startDate) as startDate,max(b.endDate) as endDate from member a "
+						+ "right join payment b on b.m_id = a.m_id group by m_id order by m_id LIMIT ?,?");
 				pstmt = conn.prepareStatement(sql.toString());
 				pstmt.setInt(1, startPage);
 				pstmt.setInt(2, pageCnt);
@@ -211,36 +213,37 @@ public class MemberDao {
 				int m_id = rs.getInt("m_id");
 				String m_name = rs.getString("m_name");
 				
-				//��泥� ����踰���
+				//전체 전화번호
 				String allphone = rs.getString("m_phone");
-				//以��� 踰���(�����몃�깆��,留�吏�留��몃�깆��)
+				//전화번호 중앙
 				String m_phone = allphone.substring(4, 8);
-				//�� 踰���
+				//마지막 번호
 				String lnum = allphone.substring(9,13);
 				
-				//��泥� 二쇱��
+				//전체 주소
 				String allarrd = rs.getString("m_arrd");
-				//��泥� 二쇱������ 湲곗��대�� �뱀�� 遺��몄�� �몃�깆�ㅻ�� 援ы��
+				//전체주소에서 나눌 기준설정
 				int idx1 = allarrd.indexOf(")");
 				int idx2 = allarrd.indexOf(",");
-				//�뱀��遺��� 湲곗��쇰� �����몃�깆��,湲곗��몃�깆�� 源�吏� �ㅺ��ㅺ린
-				String postCoed = allarrd.substring(1, idx1); //�고�몃���
-				String m_arrd = allarrd.substring(7, idx2);  //二쇱��
-				//�뱀��遺��� �ㅻ�遺� �댁�⑸�ㅺ��ㅺ린
-				String arrd1 = allarrd.substring(idx2+1);  //���몄＜��
+				//전체 주소에서 )기준으로 잘라 우편번호 
+				String postCoed = allarrd.substring(1, idx1); //우편번호
+				//전체 주소에서 , 기준으로 자름
+				String m_arrd = allarrd.substring(7, idx2);  //주소
+				//,의 뒤부분 주소
+				String arrd1 = allarrd.substring(idx2+1);  //상세주소
 				
 				String m_sex = rs.getString("m_sex");
 				
-				//�대���
+				//전체이메일
 				String allemail = rs.getString("m_email");
-				// 癒쇱�� @ �� �몃�깆�ㅻ�� 李얜����  
+				//전체 이메일에서 나눌 기준설정
 				int idx = allemail.indexOf("@");
 				// @ ��遺�遺��� 異�異�
 				// substring�� 泥ル�吏� 吏����� �몃�깆�ㅻ�� �ы�⑦��吏� ������.
 				// ������ 寃쎌�곕�� 泥ル�吏� 臾몄���� 遺��� 異�異�����.
-				String m_email = allemail.substring(0, idx);  //�대��� ��遺�遺�
+				String m_email = allemail.substring(0, idx);  //처음부터 @까지 주소
 				 
-				String email2 = allemail.substring(idx+1);   //�대��� �룸�遺�
+				String email2 = allemail.substring(idx+1);   //@뒤부분 주소
 				
 			
 				int c_num = rs.getInt("c_num");
@@ -249,7 +252,7 @@ public class MemberDao {
 				
 			}
 		}catch (Exception e) {
-			e.printStackTrace();// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			closeAll(rs, pstmt, conn);
 		}
@@ -259,10 +262,10 @@ public class MemberDao {
 	}
 	
 	//실제 update기능
-	public void update(String id,String name,String phone,String arrd,String sex,String email,String classNum) {
+	public void update(String id,String name,String phone,String arrd,String sex,String email) {
 		try {
 			StringBuffer sql = new StringBuffer();
-			sql.append("update member set m_name=?,m_phone=?,m_arrd=?,m_sex=?,m_email=?,c_num=? where m_id=?");
+			sql.append("update member set m_name=?,m_phone=?,m_arrd=?,m_sex=?,m_email=? where m_id=?");
 			conn=DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql.toString());
 			pstmt.setString(1, name);
@@ -270,8 +273,8 @@ public class MemberDao {
 			pstmt.setString(3, arrd);
 			pstmt.setString(4, sex);
 			pstmt.setString(5, email);
-			pstmt.setInt(6, Integer.valueOf(classNum));
-			pstmt.setInt(7, Integer.valueOf(id));
+			//pstmt.setInt(6, Integer.valueOf(classNum));
+			pstmt.setInt(6, Integer.valueOf(id));
 			pstmt.executeUpdate();
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -330,7 +333,7 @@ public class MemberDao {
 	}
 	
 	
-	//수업신청시 있는 아이디인지 확인
+	//수업신청시 있는 아이디인지 확인  and 보관함 신청시 있는 아이디인지 확인 and 출석체크시 있는아이디인지 확인
 	public int checkMemberid(String id) {
 		try {
 			StringBuffer sql= new StringBuffer();

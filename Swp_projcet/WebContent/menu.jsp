@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
 	integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
@@ -36,11 +38,26 @@ body, html {
 	
 	}
 }
+@media ( max-width : 768px){
+	img{
+	 width: 0;
+	 height:0;
+	
+	}
+}
 @media ( min-width : 768px) {
 	aside {
 		height: 100%;
 	}
 }
+
+@media ( max-width : 768px) {
+	main {
+		margin-top:15%;
+	}
+}
+
+
 
 </style>
 </head>
@@ -48,7 +65,7 @@ body, html {
 	<div class="container-fluid ">
 		<div class="row h-100">
 			<aside class="col-12 col-md-2 p-0 bg-dark fixed-top">
-					<a href="menu.jsp"><img src="resources/img/a1.png" ></a>
+					<a href="main.jsp"><img src="resources/img/a1.png" ></a>
 				<nav
 					class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
 					<div class="collapse navbar-collapse align-items-start">

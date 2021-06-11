@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -25,10 +26,10 @@
 					 </div>
 					 <div>
 					<input class ="btn btn-primary" id="joinClassbtn" type="button" onclick="test()" value="신청">
+					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findIdview.do?c_num=${c_num}">검색</a>
 					</div>
 				</div>
 			</form>
-					<a class="ls-modal btn btn-primary" data-toggle="modal" data-target="#modal" href="findIdview.do?c_num=${c_num}">검색</a>
 			
 				<!-- Modal -->
 			<div class="modal fade" id="modal" >
@@ -80,6 +81,9 @@
 			</c:forEach>	
 				</tbody>
 			</table>
+			<div style="display: flex; flex-direction: row; justify-content: flex-end;">
+				<a class="btn btn-warning" href="joinClassList.do?page=${page}">뒤로가기</a>
+			</div>
 		</div>
 		</div>
 	</main>
@@ -89,7 +93,7 @@
 		  $('#modal').modal('show').find('.modal-body').load($(this).attr('href'));
 		});
 	 
-	 function test() {
+	 function checkMemberId() {
 		 var id = $("#Id").val();
 		 if(id ==""){
 			 var Text ='<font>회원번호를 입력하세요.</font>';

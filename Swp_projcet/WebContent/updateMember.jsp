@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="./resources/js/script.js"></script>
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -77,14 +78,9 @@
 					<input type="radio"name="sex" value='여'<c:if test ="${MemberView.m_sex eq '여'}">checked="checked"</c:if>/>여
 				</div>
 			</div>
-			<div class="form-group row">
-				<label class="control-lable col-sm-2">수강 수업</label>
-				<div class="col-sm-3">
-				   <input type="text" name="classNum" class="form-control" value="${MemberView.c_num}">
-				</div>
-			</div>
+				  <!--  <input type="text" name="classNum" class="form-control" value="${MemberView.c_num}"> -->
 				<br>
-			<input class="btn btn-primary" type="submit" value="수정하기"> <a href="MemberList.do" class="btn btn-warning">취소</a>
+			<input class="btn btn-primary" type="submit" value="수정하기"> <a href="searchList.do?page=${page}" class="btn btn-warning">취소</a>
 			</form>
 		</div>
 	</main>

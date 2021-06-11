@@ -66,8 +66,8 @@ public class addMember implements Command {
 
 
         //가입 이메일 전송
-		final String user="";
-		final String password="";
+		final String user=""; //발신자 이메일 아이디
+		final String password=""; // 발신자 이메일 패스워드
 		
 		//네이버 이메일 설정
 		Properties prop = new Properties();
@@ -85,7 +85,8 @@ public class addMember implements Command {
 		try { 
 			MimeMessage message = new MimeMessage(session); 
 			message.setFrom(new InternetAddress(user));
-			//������ �대���
+			//수신자 메일 주소
+			System.out.println(email);
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(email)); 
 			//이메일 제목
 			message.setSubject("KTKO SMTP TEST1111"); 
@@ -94,22 +95,22 @@ public class addMember implements Command {
 		      MimeBodyPart mbp1 = new MimeBodyPart();
 		      
 		      	//이메일 전송 내용
-	            mbp1.setText("가입을 축하합니다. "+name+"/n 회원님 아이디는: "+ id+" 입니다.");
+	            mbp1.setText("회원 등록 을 축하합니다. "+name+"/n 회원님 아이디는: "+ id+" 입니다.");
 	            
 	            
 	            String fileaddress="C:\\upload\\"+id+".png";
 	            MimeBodyPart mbp2 = new MimeBodyPart();
-	            FileDataSource  fds = new FileDataSource(fileaddress); //바코드 이미지 생성경로
-	            mbp2.setDataHandler(new DataHandler(fds));                      //���� 泥⑤�
+	            FileDataSource  fds = new FileDataSource(fileaddress); //바코드 이미지 경로
+	            mbp2.setDataHandler(new DataHandler(fds));                     
 	            mbp2.setFileName(fds.getName());
 	            
 	            Multipart mp = new MimeMultipart();
 	            mp.addBodyPart(mbp1);
 	            mp.addBodyPart(mbp2);
 	            
-	            message.setContent(mp);//전송
+	            message.setContent(mp);
 	            
-	            Transport.send(message);
+	            Transport.send(message); //전송
 	            
 	        //이메일 전송 성공시
 			System.out.println("Success Message Send"); 

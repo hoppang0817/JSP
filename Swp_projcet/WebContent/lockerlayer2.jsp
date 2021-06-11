@@ -12,6 +12,7 @@
 </head>
 <body>
 	<form name ="frmSubmit"class="form-horizontal">
+	<input type="hidden" name="page" value="${page}">
 	<input type="hidden" name="l_num" value="${l_num}">
 			<div class="form-group row">
 				<label class="control-lable col-sm-3"> 회원번호  </label>

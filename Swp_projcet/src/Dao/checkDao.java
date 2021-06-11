@@ -62,6 +62,7 @@ public class checkDao {
 		}
 	}
 	
+	//출석체크용 count
 	public int list(String id){
 //		int cnt = 0;
 //		ArrayList<checkDto>list = new ArrayList<checkDto>();
@@ -74,20 +75,19 @@ public class checkDao {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				if(rs.getInt("cnt") == 1) {
-					return  1;
+					return  1;//당일 출석체크 완료한 회원
 				}
 				else {
 					
-					return 0;
+					return 0;//출석체크 하지 않은 회원
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			closeAll(null, pstmt, conn);
+			closeAll(rs, pstmt, conn);
 		}
-		return -1;
-		
+		return 2;
 	}
 	
 	public ArrayList<mCheck> listPerOne(String id){

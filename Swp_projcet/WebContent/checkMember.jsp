@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <title>Insert title here</title>
 
 </head>
@@ -19,7 +20,7 @@
 			<h2>출석 체크</h2>
 			<br>
 			<c:choose>
-			<c:when test="${cnt == 1 || cnt == -1 }">
+			<c:when test="${cnt == 1}">
 				<div class="alert alert-danger">
 					이미 출석체크 완료
 				</div>
@@ -32,7 +33,7 @@
 			</c:choose>
 			<form method="post" class="form-horizontal" action="checkMember.do">
 			<div class="form-group row">
-				<label class="control-lable col-sm-1"> 회원번호  </label>
+				<label class="control-lable col-sm-2"> 회원번호  </label>
 				<div class="col-sm-3">
 					<input type="text" name="m_id" class="form-control" >
 				</div>

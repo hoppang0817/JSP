@@ -8,6 +8,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="./resources/js/script.js"></script>
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <title>회원가입</title>
 </head>
 <body>
@@ -76,6 +77,7 @@ function checkId(){
 			//통신이 성공할경우 결과값 (data)에 저장
 			success : function(data){
 				if(data == 1){ //아이디가 중복이 아닌경우
+					console.log(data);
 					var Text ='<font color ="green">사용할 수 있는 아이디입니다.</font>';
 					$("#checkMessage").text(""); //checkMessage 영역 초기화
 					$("#checkMessage").show(); 

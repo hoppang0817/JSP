@@ -3,6 +3,9 @@ package command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.fabric.xmlrpc.base.Member;
+
+import Dao.MemberDao;
 import Dao.checkDao;
 
 public class checkMember implements Command {
@@ -19,9 +22,10 @@ public class checkMember implements Command {
 			dao.checkMember(id);
 			request.setAttribute("cnt", cnt);
 		}
-		else if(cnt == -1) {
+		else if(cnt == 2) {
 			request.setAttribute("cnt", cnt);
 		}
+
 	}
 
 }

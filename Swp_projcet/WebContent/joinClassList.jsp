@@ -55,6 +55,7 @@
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
 <script src="./resources/js/jquery-3.5.1.min.js"></script>
 <script src="./resources/js/bootstrap.bundle.min.js"></script>
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -87,7 +88,7 @@
 							<td>${list.c_grade}</td>
 							<td><button
 									<c:choose>
-							<c:when test ="${list.count < list.c_limitedNum}"> onClick="location.href='joinClassView.do?c_num=${list.c_num}'" class="btn btn-primary btn-sm"</c:when>
+							<c:when test ="${list.count < list.c_limitedNum}"> onClick="location.href='joinClassView.do?c_num=${list.c_num}&page=<%=tempPage %>'" class="btn btn-primary btn-sm"</c:when>
 							<c:otherwise>class="btn btn-danger btn-sm"  disabled="disabled"</c:otherwise>
 							</c:choose>>신청</button></td>
 							<!-- 모달창 열수있는 버튼 -->

@@ -10,6 +10,7 @@
 	integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
 	crossorigin="anonymous" />
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <meta charset="UTF-8">
 <title>Staff Login</title>
 </head>

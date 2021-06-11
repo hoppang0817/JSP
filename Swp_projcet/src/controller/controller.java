@@ -90,7 +90,7 @@ public class controller extends HttpServlet {
 				request.setAttribute("loginResult", result);
 				HttpSession session = request.getSession();
 				session.setAttribute("sessionId", id);
-				viewPage = "menu.jsp";
+				viewPage = "main.jsp";
 
 			} else if (result == 0) {
 				request.setAttribute("loginResult", result);
@@ -124,14 +124,14 @@ public class controller extends HttpServlet {
 		else if(com.equals("/addpayment.do")) {
 			command = new addpayment();
 			command.execute(request, response);
-			viewPage = "MemberList.do";
+			viewPage = "searchList.do";
 		}
 		//회원리스트 출력
-		else if (com.equals("/MemberList.do")) {
+		/*else if (com.equals("/MemberList.do")) {
 			command = new MemberList();
 			command.execute(request, response);
 			viewPage = "MemberList.jsp";
-		}
+		}*/
 		
 		else if(com.equals("/searchList.do")) {
 			command = new searchList();
@@ -213,6 +213,7 @@ public class controller extends HttpServlet {
 			viewPage = "paymentView.jsp";
 		}
 		else if(com.equals("/endDayMember.do")) {
+			System.out.println("들어오나요?");
 			command = new endDayMember();
 			command.execute(request, response);
 			viewPage = "MemberList.do";

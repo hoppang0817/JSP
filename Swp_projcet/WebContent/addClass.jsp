@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link rel="shortcut icon" href="./resources/img/favicon.ico"  type="image/x-icon">
 <title>Insert title here</title>
 </head>
 <body>
